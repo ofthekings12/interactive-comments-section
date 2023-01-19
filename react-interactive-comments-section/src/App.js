@@ -1,10 +1,11 @@
 import './App.scss';
 import AddComment from './Components/AddComment';
+import Comment from './Components/Comment';
 
 function App() {
   return (
     <div className="App">
-      <div className="comment-section">Multiple comments</div>
+      <Comment/>
       <AddComment/>
     </div>
   );

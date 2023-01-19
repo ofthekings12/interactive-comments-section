@@ -11,8 +11,44 @@ $very-light-gray: hsl(228, 33%, 97%);
 $white: hsl(0, 0%, 100%);
 
 .add-comment {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items:flex-start;
+  margin-bottom: 30px;
   background-color: $white;
-  width: 550px;
-  height: 125px;
+  width: 600px;
+  height: 100px;
   border-radius: 10px;
+  padding: 20px;
+}
+
+.avatar {
+  height: 30px;
+  padding: 0 20px 0 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+.comment-field {
+  border-color: $light-gray;
+  border-radius: 10px;
+  padding: 10px;
+  height: 70px;
+  width: 400px;
+  resize: none;
+}
+
+.submit-btn {
+  height: 45px;
+  width: 90px;
+  background-color: $moderate-blue;
+  color: $white;
+  border: none;
+  border-radius: 8px;
+  margin-left: 10px;
 }

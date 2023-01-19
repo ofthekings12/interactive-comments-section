@@ -1,8 +1,12 @@
 import React from "react";
 import "./Comment.scss";
 import Posts from "../data.json";
+import avatar from "../images/avatars/image-amyrobson.png";
 
 export default function Comment() {
+
+
+
   return (
     <div>
       {Posts &&
@@ -34,7 +38,8 @@ export default function Comment() {
                     <img
                       className="user-avatar"
                       key={post.id}
-                      src={post.user.image.webp}
+                      src={post.user.image.png}
+                      // alt="userAvatar"
                     />
                     <div className="user-handle">{post.user.username}</div>
                     <div className="created-at">{post.createdAt}</div>

@@ -30,7 +30,7 @@ $white: hsl(0, 0%, 100%);
 .form {
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: flex-start;
 }
 
 .comment-field {

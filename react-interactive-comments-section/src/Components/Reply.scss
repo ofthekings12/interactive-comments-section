@@ -10,21 +10,21 @@ $light-gray: hsl(223, 19%, 93%);
 $very-light-gray: hsl(228, 33%, 97%);
 $white: hsl(0, 0%, 100%);
 
-.add-comment {
+.add-reply {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items:flex-start;
   background-color: $white;
   width: 600px;
-  height: 100px;
+  height: 95px;
   border-radius: 10px;
-  padding: 25px;
+  padding: 20px;
 }
 
 .avatar {
-  height: 45px;
-  padding: 0 10px 0 0;
+  height: 35px;
+  padding: 0 20px 0 0;
 }
 
 .form {
@@ -33,12 +33,12 @@ $white: hsl(0, 0%, 100%);
   justify-content: start;
 }
 
-.comment-field {
+.reply-field {
   border-color: $light-gray;
   border-radius: 10px;
   padding: 10px;
-  height: 80px;
-  width: 420px;
+  height: 70px;
+  width: 400px;
   resize: none;
   font-family: 'Rubik', sans-serif;
   font-size: 15px;
@@ -47,7 +47,7 @@ $white: hsl(0, 0%, 100%);
 
 }
 
-.comment-field:focus {
+.reply-field:focus {
   outline: 1px solid $moderate-blue;
   cursor: pointer;
 }

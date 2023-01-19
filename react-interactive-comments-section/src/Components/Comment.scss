@@ -15,9 +15,10 @@ $white: hsl(0, 0%, 100%);
   flex-direction: row;
   background-color: $white;
   width: 600px;
-  height: 95px;
+  height: 100px;
   border-radius: 10px;
-  padding: 20px;
+  padding: 25px;
+  margin: 10px;
 }
 
 .vote {
@@ -30,7 +31,7 @@ $white: hsl(0, 0%, 100%);
   background-color: $light-gray;
   border-radius: 5px;
   height: 75px;
-  width: 25px;
+  width: 45px;
   color: $moderate-blue;
   font-size: 14px;
   font-weight: 500;
@@ -43,4 +44,63 @@ $white: hsl(0, 0%, 100%);
     cursor: pointer;
   }
   
+}
+
+.comment-content-header {
+  display: flex;
+  flex-direction: column;
+  padding: 0 15px;
+  .comment-content {
+    font-size: 14px;
+    color: $grayish-blue;
+    padding: 10px 0;
+  }
+}
+.comment-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  .comment-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .user-avatar {
+    height: 30px;
+    padding:0 10px 0 0px;
+  }
+  .user-handle{
+    padding-right: 20px;
+    font-weight: 500;
+    color: $dark-blue
+  }
+
+  .created-at {
+    font-size: 14px;
+    color: $grayish-blue;
+  }
+
+  
+}
+
+.reply {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: $moderate-blue;
+  font-weight: 500;
+  
+  .reply-icon{
+    margin: 3px 5px 0 0px ;
+  }
+}
+
+.reply:hover {
+ cursor: pointer;
+ filter: opacity(60%);
 }

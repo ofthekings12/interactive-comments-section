@@ -124,3 +124,44 @@ padding:10px;
   text-decoration: underline;
 
 }
+
+.editDelete {
+  display: flex;
+  flex-direction: row;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.delete {
+  color: $soft-red;
+  padding: 0 10px 0 10px;
+  
+}
+
+.delete:hover {
+  filter: opacity(60%);
+}
+
+.delete-icon {
+  margin-right: 5px;
+}
+
+.delete-icon:hover {
+  color: $grayish-blue
+}
+
+.edit {
+  color: $moderate-blue;
+
+}
+
+.edit:hover {
+  filter: opacity(60%);
+}
+
+.edit-icon {
+  margin-right: 5px;
+}
+.edit-icon:hover {
+  color: $pale-red;
+}

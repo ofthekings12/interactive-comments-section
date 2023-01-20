@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState } from "react";
 import "./Comment.scss";
 import Posts from "../data.json";
 import PostedReply from "./PostedReply";
@@ -6,12 +6,13 @@ import Reply from './Reply';
 
 
 export default function Comment() {
+  const [showReply, setShowReply] = useState(false);
   return (
     <div>
       {Posts &&
-        Posts.comments.map((post) => {
+        Posts.comments.map((post, index) => {
           return (
-            <div className="comment-reply-container">
+            <div className="comment-reply-container" key={index}>
             <div className="comment" key={post.id}>
               <div className="vote">
                 <svg
@@ -44,7 +45,7 @@ export default function Comment() {
                     <div className="user-handle">{post.user.username}</div>
                     <div className="created-at">{post.createdAt}</div>
                   </div>
-                  <div className="reply">
+                  <div className="reply" key={post.id} onClick={()=>setShowReply(!showReply)}>
                     <svg
                       className="reply-icon"
                       width="14"
@@ -64,7 +65,9 @@ export default function Comment() {
 
 
             </div>
-            <Reply/>
+            {
+              showReply ? <Reply/> : null
+            }
             </div>
           );
         })}

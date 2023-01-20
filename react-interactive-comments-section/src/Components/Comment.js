@@ -4,11 +4,8 @@ import Posts from "../data.json";
 import PostedReply from "./PostedReply";
 import avatar from "../images/avatars/image-amyrobson.png";
 
-
 export default function Comment() {
-  
   return (
-
     <div>
       {Posts &&
         Posts.comments.map((post) => {
@@ -62,10 +59,12 @@ export default function Comment() {
                 </div>
                 <div className="comment-content">{post.content}</div>
               </div>
+
+              {/* reply code */}
             </div>
           );
         })}
-        <PostedReply/>
+      <PostedReply />
     </div>
   );
 }

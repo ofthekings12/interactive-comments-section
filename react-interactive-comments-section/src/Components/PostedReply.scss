@@ -10,16 +10,20 @@ $light-gray: hsl(223, 19%, 93%);
 $very-light-gray: hsl(228, 33%, 97%);
 $white: hsl(0, 0%, 100%);
 
+.gray-line {
+border-left: solid $light-gray;
+margin-left: 15%;
+padding:10px;
+}
+
 .posted-reply {
   display: flex;
   flex-direction: row;
-  
   background-color: $white;
   width: 450px;
-  height: 100px;
+  height: 110px;
   border-radius: 10px;
-  padding: 25px;
-  margin: 10px;
+  padding: 10px 25px 10px 25px;
   margin-left: auto;
 }
 
@@ -33,7 +37,7 @@ $white: hsl(0, 0%, 100%);
   background-color: $light-gray;
   border-radius: 5px;
   height: 75px;
-  width: 45px;
+  width: 60px;
   color: $moderate-blue;
   font-size: 14px;
   font-weight: 500;

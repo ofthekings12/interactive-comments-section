@@ -63,7 +63,7 @@ function PostedReply() {
                               <div>Reply</div>
                             </div>
                           </div>
-                          <div className="p-r-content">{reply.content}</div>
+                          <div className="p-r-content"><span className="reply-to">@{reply.replyingTo}</span> {reply.content}</div>
                         </div>
                       </div>
                     </div>

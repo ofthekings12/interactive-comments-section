@@ -113,3 +113,14 @@ padding:10px;
  cursor: pointer;
  filter: opacity(60%);
 }
+
+.reply-to {
+  color: $moderate-blue;
+  font-weight: 500;
+}
+
+.reply-to:hover {
+  cursor:pointer;
+  text-decoration: underline;
+
+}

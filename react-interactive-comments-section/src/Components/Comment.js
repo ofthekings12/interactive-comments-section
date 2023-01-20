@@ -36,7 +36,7 @@ export default function Comment() {
                       className="user-avatar"
                       key={post.id}
                       src={post.user.image.png}
-                      // alt="userAvatar"
+                      alt="userAvatar"
                     />
                     <div className="user-handle">{post.user.username}</div>
                     <div className="created-at">{post.createdAt}</div>

@@ -2,6 +2,8 @@ import React from "react";
 import "./Comment.scss";
 import Posts from "../data.json";
 import PostedReply from "./PostedReply";
+import Reply from './Reply';
+
 
 export default function Comment() {
   return (
@@ -9,6 +11,7 @@ export default function Comment() {
       {Posts &&
         Posts.comments.map((post) => {
           return (
+            <div className="comment-reply-container">
             <div className="comment" key={post.id}>
               <div className="vote">
                 <svg
@@ -59,11 +62,13 @@ export default function Comment() {
                 <div className="comment-content">{post.content}</div>
               </div>
 
-              {/* reply code */}
+
+            </div>
+            <Reply/>
             </div>
           );
         })}
-      <PostedReply />
+        <PostedReply />
     </div>
   );
 }

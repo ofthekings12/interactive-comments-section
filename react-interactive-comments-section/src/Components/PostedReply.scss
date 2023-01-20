@@ -84,7 +84,7 @@ padding:10px;
     padding:0 10px 0 0px;
   }
   .p-r-user-handle{
-    padding-right: 20px;
+    padding: 0 10px 0 10px;
     font-weight: 500;
     color: $dark-blue
   }
@@ -164,4 +164,14 @@ padding:10px;
 }
 .edit-icon:hover {
   color: $pale-red;
+}
+
+.you {
+  background-color: $moderate-blue;
+  color: $very-light-gray;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 2px;
+  padding: 2px 5px 2px 5px;
+  margin-right: 15px;
 }

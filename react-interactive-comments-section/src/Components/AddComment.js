@@ -1,8 +1,10 @@
 import "./AddComment.scss";
 import React from "react";
-import avatar from "../images/avatars/image-juliusomo.png";
+import User from"../data.json"
 
 function addComment() {
+  const avatar = User.currentUser.image.png;
+
   return (
     <div className="add-comment">
       <img className="avatar" src={avatar} alt="CurrentUser" />

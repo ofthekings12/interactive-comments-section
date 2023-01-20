@@ -2,7 +2,6 @@ import React from "react";
 import "./Comment.scss";
 import Posts from "../data.json";
 import PostedReply from "./PostedReply";
-import avatar from "../images/avatars/image-amyrobson.png";
 
 export default function Comment() {
   return (

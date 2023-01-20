@@ -1,20 +1,19 @@
 import React from "react";
 import "./PostedReply.scss";
-import avatar from "../images/avatars/image-amyrobson.png";
 import Posts from "../data.json";
 
 function PostedReply() {
   return (
     <div>
       {Posts &&
-        Posts.comments.map((post) => {
+        Posts.comments.map((post, index) => {
           return (
-            <>
+            <div key={index}>
               {post.replies &&
-                post.replies.map((reply) => {
+                post.replies.map((reply, index) => {
                   return (
-                    <div className="gray-line">
-                      <div className="posted-reply" key={reply.id}>
+                    <div className="gray-line" key={index}>
+                      <div className="posted-reply">
                         <div className="p-r-vote">
                           <svg
                             className="p-r-upvote"
@@ -39,11 +38,10 @@ function PostedReply() {
                             <div className="p-r-details">
                               <img
                                 className="p-r-user-avatar"
-                                key={reply.id}
                                 src={reply.user.image.png}
                                 // alt="userAvatar"
                               />
-                              <div className="p-r-user-handle">
+                              <div className="p-r-user-handle" key={reply.id}>
                                 {reply.user.username}
                               </div>
                               <div className="p-r-created-at">
@@ -71,7 +69,7 @@ function PostedReply() {
                     </div>
                   );
                 })}
-            </>
+            </div>
           );
         })}
     </div>

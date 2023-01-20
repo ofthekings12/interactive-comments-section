@@ -40,7 +40,7 @@ function PostedReply() {
                               <img
                                 className="p-r-user-avatar"
                                 key={reply.key}
-                                src={avatar}
+                                src={reply.user.image.png}
                                 // alt="userAvatar"
                               />
                               <div className="p-r-user-handle">

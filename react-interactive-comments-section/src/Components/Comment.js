@@ -36,7 +36,7 @@ export default function Comment() {
                     <img
                       className="user-avatar"
                       key={post.id}
-                      src={avatar}
+                      src={post.user.image.png}
                       // alt="userAvatar"
                     />
                     <div className="user-handle">{post.user.username}</div>

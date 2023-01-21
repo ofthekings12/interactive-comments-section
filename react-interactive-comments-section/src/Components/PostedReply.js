@@ -1,6 +1,7 @@
 import React from "react";
 import "./PostedReply.scss";
 import Posts from "../data.json";
+import DeleteModal from "./DeleteModal";
 
 function PostedReply() {
   let currentUserUsername = Posts.currentUser.username;
@@ -57,7 +58,7 @@ function PostedReply() {
                               </div>
                               {/* edit & delete */}
                               <div className="editDelete">
-                                <div className="delete">
+                                <div className="delete" >
                                   <svg
                                     className="delete-icon"
                                     width="12"
@@ -130,6 +131,7 @@ function PostedReply() {
                     </div>
                   );
                 })}
+                      <DeleteModal/>
             </div>
           );
         })}

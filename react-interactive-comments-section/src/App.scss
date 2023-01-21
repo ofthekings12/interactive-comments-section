@@ -11,6 +11,7 @@ $very-light-gray: hsl(228, 33%, 97%);
 $white: hsl(0, 0%, 100%);
 
 .App {
+  background-color: $very-light-gray;
   overflow: scroll;
   display: flex;
   flex-direction: column;

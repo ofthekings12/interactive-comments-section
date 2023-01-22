@@ -6,7 +6,11 @@ function DeleteModal({ isOpen, toggleModal }) {
 
   return (
     <div className="modal">
-      <div className="overlay">
+      <div className="overlay" onClick={()=> {
+        if (isOpen) {
+          toggleModal(false)
+        }
+      }}>
       <div className="modal-box">
 
         <div className='modal-content'>

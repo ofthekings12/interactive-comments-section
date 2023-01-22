@@ -1,10 +1,22 @@
-import React from "react";
+import { React, useState } from "react";
 import "./PostedReply.scss";
 import Posts from "../data.json";
 import DeleteModal from "./DeleteModal";
 
 function PostedReply() {
   let currentUserUsername = Posts.currentUser.username;
+  const [modal, setModal] = useState(false);
+
+  const handleState = (e) => {
+    setModal(e);
+};
+
+const toggleModal = () => {
+  setModal(!modal);
+};
+
+
+
 
   return (
     <div>
@@ -58,7 +70,7 @@ function PostedReply() {
                               </div>
                               {/* edit & delete */}
                               <div className="editDelete">
-                                <div className="delete" >
+                                <div className="delete" onClick={toggleModal}>
                                   <svg
                                     className="delete-icon"
                                     width="12"
@@ -131,7 +143,9 @@ function PostedReply() {
                     </div>
                   );
                 })}
-                      <DeleteModal/>
+              { modal &&  (<DeleteModal 
+              isOpen={setModal}
+              toggleModal={handleState} />) }
             </div>
           );
         })}

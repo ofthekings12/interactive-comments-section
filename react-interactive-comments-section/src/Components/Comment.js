@@ -86,7 +86,7 @@ const toggleReply = (id) => {
             </div>
           );
         })}
-      <PostedReply/>
+      <PostedReply />
 
 
     </div>

@@ -2,10 +2,12 @@ import { React, useState } from "react";
 import "./PostedReply.scss";
 import Posts from "../data.json";
 import DeleteModal from "./DeleteModal";
+import PostedReplyForm from "./PostedReplyForm";
 
 function PostedReply() {
   let currentUserUsername = Posts.currentUser.username;
 
+  // useState Modal
   const [modal, setModal] = useState(false);
 
   const handleState = (e) => {
@@ -16,7 +18,17 @@ const toggleModal = () => {
   setModal(!modal);
 };
 
+//useState postedReplyForm
 
+const [showPostedReplyForm, setShowReplyForm] = useState(false);
+
+const togglePostedReplyForm = (id) => {
+  if (showPostedReplyForm === id) {
+    setShowReplyForm(null);
+    } else {
+      setShowReplyForm(id)
+    }
+};
 
 
   return (
@@ -117,7 +129,10 @@ const toggleModal = () => {
                                   {reply.createdAt}
                                 </div>
                               </div>
-                              <div className="p-r-reply">
+                              <div className="p-r-reply" key={post.id}
+                              onClick={() => {
+                                togglePostedReplyForm(reply.id)
+                              }}>
                                 <svg
                                   className="p-r-reply-icon"
                                   width="14"
@@ -141,6 +156,11 @@ const toggleModal = () => {
                           </div>
                         </div>
                       </div>
+                      {showPostedReplyForm === reply.id && (
+                          <PostedReplyForm key={reply.id} id={reply.id} togglePostedReplyForm={togglePostedReplyForm}/>
+                      )
+                      }
+                          
                     </div>
                   );
                 })}

@@ -10,3 +10,43 @@ $light-gray: hsl(223, 19%, 93%);
 $very-light-gray: hsl(228, 33%, 97%);
 $white: hsl(0, 0%, 100%);
 
+.posted-reply-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: $white;
+  width: 500px;
+  height: 120px;
+  border-radius: 10px;
+  padding: 10px 25px 10px 25px;
+  margin-top: 20px;
+  margin-left: auto;
+}
+
+.prf-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.prf-form-field {
+  border-color: $light-gray;
+  border-radius: 10px;
+  padding: 10px;
+  height: 80px;
+  width: 350px;
+  resize: none;
+  font-family: "Rubik", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: $grayish-blue;
+}
+
+.prf-form-field:focus {
+  outline: 1px solid $moderate-blue;
+  cursor: pointer;
+}
+
+.prf-btn {
+
+}

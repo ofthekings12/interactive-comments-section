@@ -5,6 +5,7 @@ import DeleteModal from "./DeleteModal";
 
 function PostedReply() {
   let currentUserUsername = Posts.currentUser.username;
+
   const [modal, setModal] = useState(false);
 
   const handleState = (e) => {

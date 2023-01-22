@@ -8,12 +8,23 @@ export default function Comment() {
 
   const [showReply, setShowReply] = useState(false);
 
+
+const toggleReply = (id) => {
+  if(showReply === id) {
+    setShowReply(null);
+  } else {
+    setShowReply(id);
+  }
+};
+
+
   return (
     <div>
       {Posts &&
         Posts.comments.map((post, index) => {
           return (
             <div className="comment-reply-container" key={index}>
+
               <div className="comment" key={post.id}>
                 <div className="vote">
                   <svg
@@ -49,7 +60,9 @@ export default function Comment() {
                     <div
                       className="reply"
                       key={post.id}
-                      onClick={() => setShowReply(!showReply)}
+                      onClick={() => {
+                        toggleReply(post.id)
+                      }}
                     >
                       <svg
                         className="reply-icon"
@@ -68,7 +81,8 @@ export default function Comment() {
                   <div className="comment-content">{post.content}</div>
                 </div>
               </div>
-              {showReply ? <Reply /> : null}
+              { 
+              showReply === post.id && (<Reply commentId={post.id} /> )}
             </div>
           );
         })}

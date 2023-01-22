@@ -1,9 +1,9 @@
 import React from 'react';
-import './Reply.scss';
+import './ReplyForm.scss';
 import User from"../data.json"
 // import avatar from "../images/avatars/image-juliusomo.png";
 
-function Reply({ commentId }) {
+function ReplyForm({ commentId }) {
   const avatar = User.currentUser.image.png;
   
   return (
@@ -17,4 +17,4 @@ function Reply({ commentId }) {
   )
 }
 
-export default Reply
+export default ReplyForm;

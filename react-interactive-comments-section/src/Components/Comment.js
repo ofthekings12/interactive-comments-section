@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import "./Comment.scss";
 import Posts from "../data.json";
 import PostedReply from "./PostedReply";
-import Reply from "./Reply";
+import ReplyForm from "./ReplyForm";
 
 export default function Comment() {
 
@@ -82,7 +82,7 @@ const toggleReply = (id) => {
                 </div>
               </div>
               { 
-              showReply === post.id && (<Reply commentId={post.id} /> )}
+              showReply === post.id && (<ReplyForm commentId={post.id} /> )}
             </div>
           );
         })}

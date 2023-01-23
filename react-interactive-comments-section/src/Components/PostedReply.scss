@@ -20,9 +20,10 @@ padding:10px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   background-color: $white;
   width: 500px;
-  height: 120px;
+  min-height: 120px;
   border-radius: 10px;
   padding: 10px 25px 10px 25px;
   margin-left: auto;
@@ -180,8 +181,9 @@ padding:10px;
 
 .edit-form {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  flex-direction: column;
+  align-items:flex-end;
+  
 }
 
 .edit-form-field {
@@ -189,7 +191,7 @@ padding:10px;
   border-radius: 10px;
   padding: 10px;
   height: 80px;
-  width: 325px;
+  width: 370px;
   resize: none;
   font-family: "Rubik", sans-serif;
   font-size: 15px;

@@ -58,7 +58,8 @@ padding:10px;
 .p-r-content-header {
   display: flex;
   flex-direction: column;
-  padding: 0 15px;
+  margin: 10px 15px;
+
   .p-r-content {
     font-size: 14px;
     color: $grayish-blue;

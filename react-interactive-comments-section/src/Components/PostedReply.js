@@ -32,6 +32,16 @@ function PostedReply() {
 
   //useState to toggle editForm
 
+  const [showEditForm, setShowEditForm] = useState(false);
+
+  const toggleShowEditForm = (id) => {
+    if (showEditForm === id) {
+      setShowEditForm(null);
+    } else {
+      setShowEditForm(id);
+    }
+  };
+
   return (
     <div>
       {Posts &&
@@ -98,7 +108,16 @@ function PostedReply() {
                                   </svg>
                                   Delete
                                 </div>
-                                <div className="edit">
+
+                                {/* editbutton */}
+                                <div
+                                  className="edit"
+                                  key={post.id}
+                                  onClick={() => {
+                                    toggleShowEditForm(index);
+                                  }}
+                                  data-content={reply.content}
+                                >
                                   <svg
                                     className="edit-icon"
                                     width="14"
@@ -152,25 +171,27 @@ function PostedReply() {
                               </div>
                             </div>
                           )}
-                          <div className="p-r-content">
-                            <span className="reply-to">
-                              {`${"@" + reply.replyingTo}`}
-                            </span>{" "}
-                            {reply.content}
-                          </div>
 
                           {/* editform */}
-
-                          <form className="edit-form">
-                            <textarea className="edit-form-field" type="text">
+                          {showEditForm === index ? (
+                            <form className="edit-form">
+                              <textarea className="edit-form-field" type="text">
                               {reply.content}
-                            </textarea>
-                            <input
-                              className="update-btn"
-                              type="submit"
-                              value="UPDATE"
-                            />
-                          </form>
+                              </textarea>
+                              <input
+                                className="update-btn"
+                                type="submit"
+                                value="UPDATE"
+                              />
+                            </form>
+                          ) : (
+                            <div className="p-r-content">
+                              <span className="reply-to">
+                                {`${"@" + reply.replyingTo}`}
+                              </span>{" "}
+                              {reply.content}
+                            </div>
+                          )}
                           {/* editform ends */}
                         </div>
                       </div>

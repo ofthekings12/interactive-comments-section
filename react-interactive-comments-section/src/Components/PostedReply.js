@@ -12,24 +12,25 @@ function PostedReply() {
 
   const handleState = (e) => {
     setModal(e);
-};
+  };
 
-const toggleModal = () => {
-  setModal(!modal);
-};
+  const toggleModal = () => {
+    setModal(!modal);
+  };
 
-//useState postedReplyForm
+  //useState postedReplyForm
 
-const [showPostedReplyForm, setShowReplyForm] = useState(false);
+  const [showPostedReplyForm, setShowReplyForm] = useState(false);
 
-const togglePostedReplyForm = (id) => {
-  if (showPostedReplyForm === id) {
-    setShowReplyForm(null);
+  const togglePostedReplyForm = (id) => {
+    if (showPostedReplyForm === id) {
+      setShowReplyForm(null);
     } else {
-      setShowReplyForm(id)
+      setShowReplyForm(id);
     }
-};
+  };
 
+  //useState to toggle editForm
 
   return (
     <div>
@@ -129,10 +130,13 @@ const togglePostedReplyForm = (id) => {
                                   {reply.createdAt}
                                 </div>
                               </div>
-                              <div className="p-r-reply" key={post.id}
-                              onClick={() => {
-                                togglePostedReplyForm(reply.id)
-                              }}>
+                              <div
+                                className="p-r-reply"
+                                key={post.id}
+                                onClick={() => {
+                                  togglePostedReplyForm(reply.id);
+                                }}
+                              >
                                 <svg
                                   className="p-r-reply-icon"
                                   width="14"
@@ -150,23 +154,39 @@ const togglePostedReplyForm = (id) => {
                           )}
                           <div className="p-r-content">
                             <span className="reply-to">
-                              @{reply.replyingTo}
+                              {`${"@" + reply.replyingTo}`}
                             </span>{" "}
                             {reply.content}
                           </div>
+
+                          {/* editform */}
+
+                          <form className="edit-form">
+                            <textarea className="edit-form-field" type="text">
+                              {reply.content}
+                            </textarea>
+                            <input
+                              className="update-btn"
+                              type="submit"
+                              value="UPDATE"
+                            />
+                          </form>
+                          {/* editform ends */}
                         </div>
                       </div>
                       {showPostedReplyForm === reply.id && (
-                          <PostedReplyForm key={reply.id} id={reply.id} togglePostedReplyForm={togglePostedReplyForm}/>
-                      )
-                      }
-                          
+                        <PostedReplyForm
+                          key={reply.id}
+                          id={reply.id}
+                          togglePostedReplyForm={togglePostedReplyForm}
+                        />
+                      )}
                     </div>
                   );
                 })}
-              { modal &&  (<DeleteModal 
-              isOpen={setModal}
-              toggleModal={handleState} />) }
+              {modal && (
+                <DeleteModal isOpen={setModal} toggleModal={handleState} />
+              )}
             </div>
           );
         })}

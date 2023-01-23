@@ -52,6 +52,7 @@ function PostedReply() {
                 post.replies.map((reply, index) => {
                   return (
                     <div className="gray-line" key={index}>
+                      <div className='test'>
                       <div className="posted-reply">
                         <div className="p-r-vote">
                           <svg
@@ -72,6 +73,7 @@ function PostedReply() {
                             <path d="M9.256 2.66c.204 0 .38-.056.53-.167.148-.11.222-.243.222-.396V.722c0-.152-.074-.284-.223-.395a.859.859 0 0 0-.53-.167H.76a.859.859 0 0 0-.53.167C.083.437.009.57.009.722v1.375c0 .153.074.285.223.396a.859.859 0 0 0 .53.167h8.495Z" />
                           </svg>
                         </div>
+
                         <div className="p-r-content-header">
                           {currentUserUsername === reply.user.username ? (
                             // beginning of logged in user
@@ -194,6 +196,7 @@ function PostedReply() {
                           )}
                           {/* editform ends */}
                         </div>
+                      </div>
                       </div>
                       {showPostedReplyForm === reply.id && (
                         <PostedReplyForm

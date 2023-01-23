@@ -34,7 +34,7 @@ $white: hsl(0, 0%, 100%);
   border-radius: 10px;
   padding: 10px;
   height: 80px;
-  width: 350px;
+  width: 325px;
   resize: none;
   font-family: "Rubik", sans-serif;
   font-size: 15px;
@@ -48,5 +48,13 @@ $white: hsl(0, 0%, 100%);
 }
 
 .prf-btn {
+height: 42px;
+width: 90px;
+background-color: $moderate-blue;
+color: $white;
+border: none;
+border-radius: 8px;
+margin-left: 10px;
+font-family: "Rubik,", sans-serif;
 
 }

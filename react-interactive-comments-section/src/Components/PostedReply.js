@@ -52,7 +52,6 @@ function PostedReply() {
                 post.replies.map((reply, index) => {
                   return (
                     <div className="gray-line" key={index}>
-                      <div className='test'>
                       <div className="posted-reply">
                         <div className="p-r-vote">
                           <svg
@@ -177,9 +176,8 @@ function PostedReply() {
                           {/* editform */}
                           {showEditForm === index ? (
                             <form className="edit-form">
-                              <textarea className="edit-form-field" type="text">
-                              {reply.content}
-                              </textarea>
+                              <textarea className="edit-form-field" type="text" defaultValue= {reply.content}/>
+                              
                               <input
                                 className="update-btn"
                                 type="submit"
@@ -196,7 +194,6 @@ function PostedReply() {
                           )}
                           {/* editform ends */}
                         </div>
-                      </div>
                       </div>
                       {showPostedReplyForm === reply.id && (
                         <PostedReplyForm

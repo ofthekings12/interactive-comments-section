@@ -8,15 +8,18 @@ function PostedReply() {
   
   const [comments, setCommments] = useState([]);
   
-  //Fetch data from JSON Server
+  //Fetch comments from JSON Server
   useEffect(() => {
-    axios.get('http://localhost:3000/comments')
+    axios.get('http://localhost:3001/comments')
     .then(res => {
       setCommments(res.data);
     });
   }, []);
+
   
-  let currentUserUsername = comments.currentUser ? comments.currentUser.userName : "";
+
+  
+  let currentUserUsername = comments.currentUser ? comments.currentUser.username : "";
   
 
   // useState Modal

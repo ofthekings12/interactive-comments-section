@@ -1,11 +1,23 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import "./PostedReply.scss";
-import Posts from "../data.json";
+import axios from 'axios';
 import DeleteModal from "./DeleteModal";
 import PostedReplyForm from "./PostedReplyForm";
 
 function PostedReply() {
-  let currentUserUsername = Posts.currentUser.username;
+  
+  const [comments, setCommments] = useState([]);
+  
+  //Fetch data from JSON Server
+  useEffect(() => {
+    axios.get('http://localhost:3000/comments')
+    .then(res => {
+      setCommments(res.data);
+    });
+  }, []);
+  
+  let currentUserUsername = comments.currentUser ? comments.currentUser.userName : "";
+  
 
   // useState Modal
   const [modal, setModal] = useState(false);
@@ -44,12 +56,12 @@ function PostedReply() {
 
   return (
     <div>
-      {Posts &&
-        Posts.comments.map((post, index) => {
+      {comments &&
+        comments.map((comment, index) => {
           return (
             <div key={index}>
-              {post.replies &&
-                post.replies.map((reply, index) => {
+              {comment.replies &&
+                comment.replies.map((reply, index) => {
                   return (
                     <div className="gray-line" key={index}>
                       <div className="posted-reply">
@@ -113,7 +125,7 @@ function PostedReply() {
                                 {/* editbutton */}
                                 <div
                                   className="edit"
-                                  key={post.id}
+                                  key={comment.id}
                                   onClick={() => {
                                     toggleShowEditForm(index);
                                   }}
@@ -152,7 +164,7 @@ function PostedReply() {
                               </div>
                               <div
                                 className="p-r-reply"
-                                key={post.id}
+                                key={comment.id}
                                 onClick={() => {
                                   togglePostedReplyForm(reply.id);
                                 }}

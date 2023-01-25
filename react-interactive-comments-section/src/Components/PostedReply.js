@@ -198,7 +198,7 @@ function PostedReply() {
                           {/* editform */}
                           {showEditForm === reply.id ? (
                             <form className="edit-form">
-                              <textarea className="edit-form-field" type="text" defaultValue= {reply.content}/>
+                              <textarea className="edit-form-field" type="text" defaultValue={`@${reply.replyingTo} ${reply.content}`}/>
                               
                               <input
                                 className="update-btn"

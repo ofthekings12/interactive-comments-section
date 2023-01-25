@@ -7,8 +7,9 @@ import PostedReplyForm from "./PostedReplyForm";
 function PostedReply() {
   
   const [comments, setCommments] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
   
-  //Fetch comments from JSON Server
+  //Fetch comments/replies/data from JSON Server
   useEffect(() => {
     axios.get('http://localhost:3001/comments')
     .then(res => {
@@ -16,11 +17,17 @@ function PostedReply() {
     });
   }, []);
 
+  // let currentUserUsername = comments.currentUser ? comments.currentUser.username : "";
   
 
-  
-  let currentUserUsername = comments.currentUser ? comments.currentUser.username : "";
-  
+  //Fetch currentUser
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/currentUser')
+    .then(res => {
+      setCurrentUser(res.data);      
+    })
+  }, [])
 
   // useState Modal
   const [modal, setModal] = useState(false);
@@ -89,7 +96,7 @@ function PostedReply() {
                         </div>
 
                         <div className="p-r-content-header">
-                          {currentUserUsername === reply.user.username ? (
+                          {currentUser && reply.user.username === currentUser.username ? (
                             // beginning of logged in user
                             <div className="p-r-header">
                               <div className="p-r-details">
@@ -130,7 +137,7 @@ function PostedReply() {
                                   className="edit"
                                   key={comment.id}
                                   onClick={() => {
-                                    toggleShowEditForm(index);
+                                    toggleShowEditForm(reply.id);
                                   }}
                                   data-content={reply.content}
                                 >
@@ -189,7 +196,7 @@ function PostedReply() {
                           )}
 
                           {/* editform */}
-                          {showEditForm === index ? (
+                          {showEditForm === reply.id ? (
                             <form className="edit-form">
                               <textarea className="edit-form-field" type="text" defaultValue= {reply.content}/>
                               

@@ -5,9 +5,12 @@ import PostedReply from "./PostedReply";
 import ReplyForm from "./ReplyForm";
 
 export default function Comment() {
+  
 
+  
+
+  // Toggle ReplyForm
   const [showReply, setShowReply] = useState(false);
-
 
 const toggleReply = (id) => {
   if(showReply === id) {

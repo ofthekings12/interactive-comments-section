@@ -14,7 +14,10 @@ function PostedReply() {
     axios.get('http://localhost:3001/comments')
     .then(res => {
       setCommments(res.data);
-    });
+    })
+    .catch(error => {
+      console.error(error)
+    })
   }, []);
 
   // let currentUserUsername = comments.currentUser ? comments.currentUser.username : "";
@@ -26,6 +29,9 @@ function PostedReply() {
     axios.get('http://localhost:3001/currentUser')
     .then(res => {
       setCurrentUser(res.data);      
+    })
+    .catch(error => {
+      console.error(error)
     })
   }, [])
 

@@ -1,10 +1,8 @@
 import "./AddComment.scss";
 import { useEffect, useState } from "react";
 import axios from 'axios'
-// import User from"../data.json"
 
 function AddComment() {
-  // const avatar = User.currentUser.image.png;
   const [image, setImage] = useState(null)
 
   useEffect(() => {

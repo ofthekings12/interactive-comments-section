@@ -1,11 +1,23 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import "./Comment.scss";
-import Posts from "../data.json";
 import PostedReply from "./PostedReply";
 import ReplyForm from "./ReplyForm";
+import axios from 'axios';
 
 export default function Comment() {
-  
+
+  //Fetch comments from JSON
+  const [comments, setComments] = useState([]);
+
+  useEffect(()=> {
+    axios.get('http://localhost:3001/comments')
+    .then(res => {
+      setComments(res.data)
+    })
+    .catch(error => {
+      console.error(error)
+    })
+  }, [])
 
   
 
@@ -23,12 +35,12 @@ const toggleReply = (id) => {
 
   return (
     <div>
-      {Posts &&
-        Posts.comments.map((post, index) => {
+      {comments &&
+        comments.map((comment, index) => {
           return (
             <div className="comment-reply-container" key={index}>
 
-              <div className="comment" key={post.id}>
+              <div className="comment" key={comment.id}>
                 <div className="vote">
                   <svg
                     className="upvote"
@@ -38,7 +50,7 @@ const toggleReply = (id) => {
                   >
                     <path d="M6.33 10.896c.137 0 .255-.05.354-.149.1-.1.149-.217.149-.354V7.004h3.315c.136 0 .254-.05.354-.149.099-.1.148-.217.148-.354V5.272a.483.483 0 0 0-.148-.354.483.483 0 0 0-.354-.149H6.833V1.4a.483.483 0 0 0-.149-.354.483.483 0 0 0-.354-.149H4.915a.483.483 0 0 0-.354.149c-.1.1-.149.217-.149.354v3.37H1.08a.483.483 0 0 0-.354.15c-.1.099-.149.217-.149.353v1.23c0 .136.05.254.149.353.1.1.217.149.354.149h3.333v3.39c0 .136.05.254.15.353.098.1.216.149.353.149H6.33Z" />
                   </svg>
-                  <div className="vote-count">{post.score}</div>
+                  <div className="vote-count">{comment.score}</div>
                   <svg
                     className="downvote"
                     width="11"
@@ -53,18 +65,18 @@ const toggleReply = (id) => {
                     <div className="comment-details">
                       <img
                         className="user-avatar"
-                        key={post.id}
-                        src={post.user.image.png}
+                        key={comment.id}
+                        src={comment.user.image.png}
                         alt="userAvatar"
                       />
-                      <div className="user-handle">{post.user.username}</div>
-                      <div className="created-at">{post.createdAt}</div>
+                      <div className="user-handle">{comment.user.username}</div>
+                      <div className="created-at">{comment.createdAt}</div>
                     </div>
                     <div
                       className="reply"
-                      key={post.id}
+                      key={comment.id}
                       onClick={() => {
-                        toggleReply(post.id)
+                        toggleReply(comment.id)
                       }}
                     >
                       <svg
@@ -81,11 +93,11 @@ const toggleReply = (id) => {
                       <div>Reply</div>
                     </div>
                   </div>
-                  <div className="comment-content">{post.content}</div>
+                  <div className="comment-content">{comment.content}</div>
                 </div>
               </div>
               { 
-              showReply === post.id && (<ReplyForm commentId={post.id} /> )}
+              showReply === comment.id && (<ReplyForm commentId={comment.id} /> )}
             </div>
           );
         })}

@@ -6,10 +6,10 @@ import PostedReplyForm from "./PostedReplyForm";
 
 function PostedReply() {
   
-  const [comments, setCommments] = useState([]);
-  const [currentUser, setCurrentUser] = useState(null);
   
   //Fetch comments/replies/data from JSON Server
+  const [comments, setCommments] = useState([]);
+  
   useEffect(() => {
     axios.get('http://localhost:3001/comments')
     .then(res => {
@@ -19,11 +19,9 @@ function PostedReply() {
       console.error(error)
     })
   }, []);
-
-  // let currentUserUsername = comments.currentUser ? comments.currentUser.username : "";
   
-
   //Fetch currentUser
+  const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
     axios.get('http://localhost:3001/currentUser')

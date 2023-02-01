@@ -6,6 +6,19 @@ import axios from 'axios';
 
 export default function Comment() {
 
+    //Fetch currentUser
+    const [currentUser, setCurrentUser] = useState(null);
+
+    useEffect(() => {
+      axios.get('http://localhost:3001/currentUser')
+      .then(res => {
+        setCurrentUser(res.data);      
+      })
+      .catch(error => {
+        console.error(error)
+      })
+    }, [])
+
   //Fetch comments from JSON
   const [comments, setComments] = useState([]);
 
@@ -96,6 +109,8 @@ const toggleReply = (id) => {
                       </svg>
                       <div>Reply</div>
                     </div>
+
+
                   </div>
                   <div className="comment-content">{comment.content}</div>
                 </div>
@@ -104,10 +119,11 @@ const toggleReply = (id) => {
               { 
               showReply === comment.id && (
               <ReplyForm commentId={comment.id}/>
-               )}
+              )}
             </div>
           );
         })}
+
         <PostedReply />
 
 

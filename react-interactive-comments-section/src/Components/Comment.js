@@ -2,49 +2,72 @@ import { React, useState, useEffect } from "react";
 import "./Comment.scss";
 import PostedReply from "./PostedReply";
 import ReplyForm from "./ReplyForm";
-import axios from 'axios';
+import axios from "axios";
+import DeleteModal from "./DeleteModal";
 
 export default function Comment() {
+  //Fetch currentUser
 
-    //Fetch currentUser
-    const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
 
-    useEffect(() => {
-      axios.get('http://localhost:3001/currentUser')
-      .then(res => {
-        setCurrentUser(res.data);      
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/currentUser")
+      .then((res) => {
+        setCurrentUser(res.data);
       })
-      .catch(error => {
-        console.error(error)
-      })
-    }, [])
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
   //Fetch comments from JSON
   const [comments, setComments] = useState([]);
 
-  useEffect(()=> {
-    axios.get('http://localhost:3001/comments')
-    .then(res => {
-      setComments(res.data)
-    })
-    .catch(error => {
-      console.error(error)
-    })
-  }, [])
-
-  
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/comments")
+      .then((res) => {
+        setComments(res.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
   // Toggle ReplyForm
   const [showReply, setShowReply] = useState(false);
 
-const toggleReply = (id) => {
-  if(showReply === id) {
-    setShowReply(null);
-  } else {
-    setShowReply(id);
-  }
-};
+  const toggleReply = (id) => {
+    if (showReply === id) {
+      setShowReply(null);
+    } else {
+      setShowReply(id);
+    }
+  };
 
+  // useState Modal
+  const [modal, setModal] = useState(false);
+
+  const handleState = (e) => {
+    setModal(e);
+  };
+
+  const toggleModal = () => {
+    setModal(!modal);
+  };
+
+  //useState to toggle editForm
+
+  const [showEditForm, setShowEditForm] = useState(false);
+
+  const toggleShowEditForm = (id) => {
+    if (showEditForm === id) {
+      setShowEditForm(null);
+    } else {
+      setShowEditForm(id);
+    }
+  };
 
   return (
     <div>
@@ -52,7 +75,6 @@ const toggleReply = (id) => {
         comments.map((comment, index) => {
           return (
             <div className="comment-reply-container" key={index}>
-
               <div className="comment" key={comment.id}>
                 <div className="vote">
                   <svg
@@ -75,58 +97,133 @@ const toggleReply = (id) => {
                 </div>
                 {/* <div className='comment-content-header-container'> */}
                 <div className="comment-content-header">
-                  <div className="comment-header">
-                    <div className="comment-details">
-                      <img
-                        className="user-avatar"
-                        key={comment.id}
-                        src={comment.user.image.png}
-                        alt="userAvatar"
-                      />
-                      <div className="user-handle">{comment.user.username}</div>
-                      <div className="created-at">{comment.createdAt}</div>
-                    </div>
-
-
-
-                    <div
-                      className="reply"
-                      key={comment.id}
-                      onClick={() => {
-                        toggleReply(comment.id)
-                      }}
-                    >
-                      <svg
-                        className="reply-icon"
-                        width="14"
-                        height="13"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M.227 4.316 5.04.16a.657.657 0 0 1 1.085.497v2.189c4.392.05 7.875.93 7.875 5.093 0 1.68-1.082 3.344-2.279 4.214-.373.272-.905-.07-.767-.51 1.24-3.964-.588-5.017-4.829-5.078v2.404c0 .566-.664.86-1.085.496L.227 5.31a.657.657 0 0 1 0-.993Z"
-                          fill="#5357B6"
+                  {currentUser &&
+                  comment.user.username === currentUser.username ? (
+                    // beginning of logged in user
+                    <div className="p-r-header">
+                      <div className="p-r-details">
+                        <img
+                          className="p-r-user-avatar"
+                          src={comment.user.image.png}
+                          alt="userAvatar"
                         />
-                      </svg>
-                      <div>Reply</div>
+                        <div className="p-r-user-handle" key={comment.id}>
+                          {comment.user.username}
+                        </div>
+
+                        <div className="you">you</div>
+
+                        <div className="p-r-created-at">
+                          {comment.createdAt}
+                        </div>
+                      </div>
+                      {/* edit & delete */}
+                      <div className="editDelete">
+                        <div className="delete" onClick={toggleModal}>
+                          <svg
+                            className="delete-icon"
+                            width="12"
+                            height="14"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M1.167 12.448c0 .854.7 1.552 1.555 1.552h6.222c.856 0 1.556-.698 1.556-1.552V3.5H1.167v8.948Zm10.5-11.281H8.75L7.773 0h-3.88l-.976 1.167H0v1.166h11.667V1.167Z"
+                              fill="#ED6368"
+                            />
+                          </svg>
+                          Delete
+                        </div>
+
+                        {/* editbutton */}
+                        <div
+                          className="edit"
+                          key={comment.id}
+                          onClick={() => {
+                            toggleShowEditForm(comment.id);
+                          }}
+                          data-content={comment.content}
+                        >
+                          <svg
+                            className="edit-icon"
+                            width="14"
+                            height="14"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M13.479 2.872 11.08.474a1.75 1.75 0 0 0-2.327-.06L.879 8.287a1.75 1.75 0 0 0-.5 1.06l-.375 3.648a.875.875 0 0 0 .875.954h.078l3.65-.333c.399-.04.773-.216 1.058-.499l7.875-7.875a1.68 1.68 0 0 0-.061-2.371Zm-2.975 2.923L8.159 3.449 9.865 1.7l2.389 2.39-1.75 1.706Z"
+                              fill="#5357B6"
+                            />
+                          </svg>
+                          Edit
+                        </div>
+                      </div>
                     </div>
+                  ) : (
+                    <div className="comment-header">
+                      <div className="comment-details">
+                        <img
+                          className="user-avatar"
+                          key={comment.id}
+                          src={comment.user.image.png}
+                          alt="userAvatar"
+                        />
+                        <div className="user-handle">
+                          {comment.user.username}
+                        </div>
+                        <div className="created-at">{comment.createdAt}</div>
+                      </div>
 
+                      <div
+                        className="reply"
+                        key={comment.id}
+                        onClick={() => {
+                          toggleReply(comment.id);
+                        }}
+                      >
+                        <svg
+                          className="reply-icon"
+                          width="14"
+                          height="13"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M.227 4.316 5.04.16a.657.657 0 0 1 1.085.497v2.189c4.392.05 7.875.93 7.875 5.093 0 1.68-1.082 3.344-2.279 4.214-.373.272-.905-.07-.767-.51 1.24-3.964-.588-5.017-4.829-5.078v2.404c0 .566-.664.86-1.085.496L.227 5.31a.657.657 0 0 1 0-.993Z"
+                            fill="#5357B6"
+                          />
+                        </svg>
+                        <div>Reply</div>
+                      </div>
+                    </div>
+                  )}
 
-                  </div>
-                  <div className="comment-content">{comment.content}</div>
+                  {/* editform */}
+                  {showEditForm === comment.id ? (
+                    <form className="edit-form">
+                      <textarea
+                        className="comment-edit-form-field"
+                        type="text"
+                        defaultValue={comment.content}
+                      />
+
+                      <input
+                        className="update-btn"
+                        type="submit"
+                        value="UPDATE"
+                      />
+                    </form>
+                  ) : (
+                    <div className="comment-content">{comment.content}</div>
+                  )}
+                  {/* editform ends */}
                 </div>
-                {/* </div> */}
               </div>
-              { 
-              showReply === comment.id && (
-              <ReplyForm commentId={comment.id}/>
-              )}
+              {showReply === comment.id && <ReplyForm commentId={comment.id} />}
             </div>
           );
         })}
+      {modal && <DeleteModal isOpen={setModal} toggleModal={handleState} />}
 
-        <PostedReply />
-
-
+      <PostedReply />
     </div>
   );
 }

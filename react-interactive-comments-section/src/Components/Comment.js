@@ -100,20 +100,20 @@ export default function Comment() {
                   {currentUser &&
                   comment.user.username === currentUser.username ? (
                     // beginning of logged in user
-                    <div className="p-r-header">
-                      <div className="p-r-details">
+                    <div className="comment-header">
+                      <div className="comment-details">
                         <img
-                          className="p-r-user-avatar"
+                          className="user-avatar"
                           src={comment.user.image.png}
                           alt="userAvatar"
                         />
-                        <div className="p-r-user-handle" key={comment.id}>
+                        <div className="user-handle" key={comment.id}>
                           {comment.user.username}
                         </div>
 
                         <div className="you">you</div>
 
-                        <div className="p-r-created-at">
+                        <div className="created-at">
                           {comment.createdAt}
                         </div>
                       </div>

@@ -46,7 +46,7 @@ export default function Comment() {
     }
   };
 
-  // useState Modal
+  // useState Delete Modal
   const [modal, setModal] = useState(false);
 
   const handleState = (e) => {
@@ -68,6 +68,9 @@ export default function Comment() {
       setShowEditForm(id);
     }
   };
+
+  //Delete comment
+  
 
   return (
     <div>

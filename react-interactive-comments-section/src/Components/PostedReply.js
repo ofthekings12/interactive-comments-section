@@ -33,7 +33,7 @@ function PostedReply() {
     })
   }, [])
 
-  // useState Modal
+  // useState Delete Modal
   const [modal, setModal] = useState(false);
 
   const handleState = (e) => {
@@ -67,6 +67,8 @@ function PostedReply() {
       setShowEditForm(id);
     }
   };
+
+  
 
   return (
     <div>

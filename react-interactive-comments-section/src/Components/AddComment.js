@@ -5,7 +5,7 @@ import axios from "axios";
 function AddComment() {
 
   
-  // fetching currentUser avatar
+  // fetching currentUser avatar and username
   const [image, setImage] = useState(null);
   const [username, setUsername] = useState(null)
 
@@ -21,7 +21,7 @@ function AddComment() {
       });
   }, []);
 
-  //fetching data for JSON-Server
+  //creating a new comment
   const [comment, setComment] = useState("");
 
   const submitComment = async (e) => {
@@ -45,6 +45,7 @@ function AddComment() {
       console.error(err);
     }
   }
+
   
   return (
     <div>

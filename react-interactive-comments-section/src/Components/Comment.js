@@ -70,7 +70,15 @@ export default function Comment() {
   };
 
   //Delete comment
-  
+  const deleteComment = (id) => {
+    axios
+      .delete(`http://localhost:3001/comments/${id}`)
+      .then(res => {
+        setComments(comments.filter(comment => comment.id !== id))
+      })
+      .catch((error) => console.error(error));
+  };
+
 
   return (
     <div>
@@ -221,10 +229,10 @@ export default function Comment() {
                 </div>
               </div>
               {showReply === comment.id && <ReplyForm commentId={comment.id} />}
+              {modal && <DeleteModal deleteHandler={deleteComment} commentId={comment.id} isOpen={setModal} toggleModal={handleState} />}
             </div>
           );
         })}
-      {modal && <DeleteModal isOpen={setModal} toggleModal={handleState} />}
 
       <PostedReply />
     </div>

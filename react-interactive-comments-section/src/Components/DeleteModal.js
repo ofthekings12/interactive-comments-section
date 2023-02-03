@@ -1,8 +1,7 @@
 import React from 'react'
 import './DeleteModal.scss'
 
-function DeleteModal({ isOpen, toggleModal }) {
-
+function DeleteModal({ deleteHandler, commentId, isOpen, toggleModal }) {
 
   return (
     <div className="modal">
@@ -23,7 +22,9 @@ function DeleteModal({ isOpen, toggleModal }) {
               toggleModal(false)
             }
           }}>NO, CANCEL</button>
-          <button className="yes-delete">YES, DELETE</button>
+          <button className="yes-delete" onClick={() => {
+            deleteHandler(commentId)
+          }}>YES, DELETE</button>
         </div>
 
         </div>

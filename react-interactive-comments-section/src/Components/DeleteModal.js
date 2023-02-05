@@ -4,6 +4,8 @@ import './DeleteModal.scss'
 function DeleteModal({ deleteHandler, commentId, isOpen, toggleModal }) {
 
   return (
+
+    
     <div className="modal">
       <div className="overlay" onClick={()=> {
         if (isOpen) {

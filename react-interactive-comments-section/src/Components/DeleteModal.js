@@ -1,10 +1,10 @@
 import React from 'react'
 import './DeleteModal.scss'
 
-function DeleteModal({ deleteHandler, commentId, isOpen, toggleModal }) {
-
+function DeleteModal({ deleteHandler, deleteReplyHandler, replyId, commentId, isOpen, toggleModal }) {
+  
   return (
-
+    
     
     <div className="modal">
       <div className="overlay" onClick={()=> {
@@ -25,7 +25,13 @@ function DeleteModal({ deleteHandler, commentId, isOpen, toggleModal }) {
             }
           }}>NO, CANCEL</button>
           <button className="yes-delete" onClick={() => {
-            deleteHandler(commentId)
+            if (commentId) {
+              deleteHandler(commentId);
+            }
+            if (replyId) {
+              deleteReplyHandler(replyId);
+
+            }
           }}>YES, DELETE</button>
         </div>
 

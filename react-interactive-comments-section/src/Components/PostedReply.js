@@ -1,39 +1,39 @@
 import { React, useState, useEffect } from "react";
 import "./PostedReply.scss";
-import axios from 'axios';
+import axios from "axios";
 import DeleteModal from "./DeleteModal";
 import PostedReplyForm from "./PostedReplyForm";
 
 function PostedReply() {
-  
-  
-  //Fetch comments/replies/data from JSON Server
-  const [comments, setCommments] = useState([]);
-  
-  useEffect(() => {
-    axios.get('http://localhost:3001/comments')
-    .then(res => {
-      setCommments(res.data);
-    })
-    .catch(error => {
-      console.error(error)
-    })
-  }, []);
-  
   //Fetch currentUser
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/currentUser')
-    .then(res => {
-      setCurrentUser(res.data);      
-    })
-    .catch(error => {
-      console.error(error)
-    })
-  }, [])
+    axios
+      .get("http://localhost:3001/currentUser")
+      .then((res) => {
+        setCurrentUser(res.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
-  // useState Delete Modal
+  //Fetch comments/replies/data from JSON Server
+  const [comments, setComments] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/comments")
+      .then((res) => {
+        setComments(res.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  // toggle Delete Modal
   const [modal, setModal] = useState(false);
 
   const handleState = (e) => {
@@ -44,7 +44,7 @@ function PostedReply() {
     setModal(!modal);
   };
 
-  //useState postedReplyForm
+  //toggle postedReplyForm
 
   const [showPostedReplyForm, setShowReplyForm] = useState(false);
 
@@ -68,7 +68,15 @@ function PostedReply() {
     }
   };
 
-  
+  //delete Reply
+  const deleteReply = (id) => {
+    axios
+      .delete(`http://localhost:3001/comments/${id}`)
+      .then((res) => {
+        setComments(comments.filter((reply) => reply.id !== id));
+      })
+      .catch((error) => console.error(error));
+  };
 
   return (
     <div>
@@ -102,7 +110,8 @@ function PostedReply() {
                         </div>
 
                         <div className="p-r-content-header">
-                          {currentUser && reply.user.username === currentUser.username ? (
+                          {currentUser &&
+                          reply.user.username === currentUser.username ? (
                             // beginning of logged in user
                             <div className="p-r-header">
                               <div className="p-r-details">
@@ -204,8 +213,12 @@ function PostedReply() {
                           {/* editform */}
                           {showEditForm === reply.id ? (
                             <form className="edit-form">
-                              <textarea className="edit-form-field" type="text" defaultValue={`@${reply.replyingTo} ${reply.content}`}/>
-                              
+                              <textarea
+                                className="edit-form-field"
+                                type="text"
+                                defaultValue={`@${reply.replyingTo} ${reply.content}`}
+                              />
+
                               <input
                                 className="update-btn"
                                 type="submit"
@@ -230,12 +243,18 @@ function PostedReply() {
                           togglePostedReplyForm={togglePostedReplyForm}
                         />
                       )}
+                      {modal && (
+                        <DeleteModal
+                          deleteReplyHandler={deleteReply}
+                          // commentId={comment.id}
+                          replyId={reply.id}
+                          isOpen={setModal}
+                          toggleModal={handleState}
+                        />
+                      )}
                     </div>
                   );
                 })}
-              {modal && (
-                <DeleteModal isOpen={setModal} toggleModal={handleState} />
-              )}
             </div>
           );
         })}

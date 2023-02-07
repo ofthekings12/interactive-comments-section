@@ -35,6 +35,16 @@ export default function Comment() {
       });
   }, []);
 
+  // useState Delete Modal
+  const [modal, setModal] = useState(false);
+
+  const handleState = (e) => {
+    setModal(e);
+  };
+
+  const toggleModal = () => {
+    setModal(!modal);
+  };
   // Toggle ReplyForm
   const [showReply, setShowReply] = useState(false);
 
@@ -46,16 +56,6 @@ export default function Comment() {
     }
   };
 
-  // useState Delete Modal
-  const [modal, setModal] = useState(false);
-
-  const handleState = (e) => {
-    setModal(e);
-  };
-
-  const toggleModal = () => {
-    setModal(!modal);
-  };
 
   //useState to toggle editForm
 

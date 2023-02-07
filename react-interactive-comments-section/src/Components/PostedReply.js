@@ -73,7 +73,7 @@ function PostedReply() {
     axios
       .delete(`http://localhost:3001/comments/${id}`)
       .then((res) => {
-        setComments(comments.filter((reply) => reply.id !== id));
+        setComments(comments.replies.filter((reply) => reply.id !== id));
       })
       .catch((error) => console.error(error));
   };

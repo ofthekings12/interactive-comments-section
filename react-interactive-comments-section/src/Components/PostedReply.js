@@ -5,49 +5,51 @@ import DeleteModal from "./DeleteModal";
 import PostedReplyForm from "./PostedReplyForm";
 
 function PostedReply() {
+
+  
   //Fetch currentUser
   const [currentUser, setCurrentUser] = useState(null);
-
+  
   useEffect(() => {
     axios
-      .get("http://localhost:3001/currentUser")
-      .then((res) => {
-        setCurrentUser(res.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    .get("http://localhost:3001/currentUser")
+    .then((res) => {
+      setCurrentUser(res.data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
   }, []);
-
+  
   //Fetch comments/replies/data from JSON Server
   const [comments, setComments] = useState([]);
-
+  
   useEffect(() => {
     axios
-      .get("http://localhost:3001/comments")
-      .then((res) => {
-        setComments(res.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    .get("http://localhost:3001/comments")
+    .then((res) => {
+      setComments(res.data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
   }, []);
-
+  
   // toggle Delete Modal
   const [modal, setModal] = useState(false);
-
+  
   const handleState = (e) => {
     setModal(e);
   };
-
+  
   const toggleModal = () => {
     setModal(!modal);
   };
-
+  
   //toggle postedReplyForm
-
+  
   const [showPostedReplyForm, setShowReplyForm] = useState(false);
-
+  
   const togglePostedReplyForm = (id) => {
     if (showPostedReplyForm === id) {
       setShowReplyForm(null);
@@ -55,11 +57,11 @@ function PostedReply() {
       setShowReplyForm(id);
     }
   };
-
+  
   //useState to toggle editForm
-
+  
   const [showEditForm, setShowEditForm] = useState(false);
-
+  
   const toggleShowEditForm = (id) => {
     if (showEditForm === id) {
       setShowEditForm(null);
@@ -67,17 +69,17 @@ function PostedReply() {
       setShowEditForm(id);
     }
   };
-
+  
   //delete Reply
   const deleteReply = (id) => {
     axios
-      .delete(`http://localhost:3001/comments/${id}`)
-      .then((res) => {
-        setComments(comments.replies.filter((reply) => reply.id !== id));
-      })
-      .catch((error) => console.error(error));
+    .delete(`http://localhost:3001/comments/${id}`)
+    .then((res) => {
+      setComments(comments.filter((reply) => reply.id !== id));
+    })
+    .catch((error) => console.error(error));
   };
-
+  
   return (
     <div>
       {comments &&
@@ -85,9 +87,9 @@ function PostedReply() {
           return (
             <div key={index}>
               {comment.replies &&
-                comment.replies.map((reply, index) => {
+                comment.replies.map((reply) => {
                   return (
-                    <div className="gray-line" key={index}>
+                    <div className="gray-line" key={reply.id}>
                       <div className="posted-reply">
                         <div className="p-r-vote">
                           <svg
@@ -246,7 +248,7 @@ function PostedReply() {
                       {modal && (
                         <DeleteModal
                           deleteReplyHandler={deleteReply}
-                          // commentId={comment.id}
+                          // commentId={comments.id}
                           replyId={reply.id}
                           isOpen={setModal}
                           toggleModal={handleState}

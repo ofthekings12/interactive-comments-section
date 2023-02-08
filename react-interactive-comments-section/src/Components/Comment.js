@@ -6,6 +6,7 @@ import axios from "axios";
 import DeleteModal from "./DeleteModal";
 
 export default function Comment() {
+
   //Fetch currentUser
 
   const [currentUser, setCurrentUser] = useState(null);
@@ -230,11 +231,13 @@ export default function Comment() {
               </div>
               {showReply === comment.id && <ReplyForm commentId={comment.id} />}
               {modal && <DeleteModal deleteHandler={deleteComment} commentId={comment.id} isOpen={setModal} toggleModal={handleState} />}
+              {comment.replies.length > 0 ?
+              <PostedReply/> : null
+              }
             </div>
           );
         })}
 
-      <PostedReply />
     </div>
   );
 }

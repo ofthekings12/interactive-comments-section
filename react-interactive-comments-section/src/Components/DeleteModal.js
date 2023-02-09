@@ -25,12 +25,11 @@ function DeleteModal({ deleteHandler, deleteReplyHandler, replyId, commentId, is
             }
           }}>NO, CANCEL</button>
           <button className="yes-delete" onClick={() => {
-            if (commentId) {
+            if (replyId && commentId) {
+              console.log("replyId =", replyId, "commentId =", commentId)
+              deleteReplyHandler(replyId, commentId);
+            } else if (commentId) {
               deleteHandler(commentId);
-            }
-            if (replyId) {
-              deleteReplyHandler(replyId);
-
             }
           }}>YES, DELETE</button>
         </div>

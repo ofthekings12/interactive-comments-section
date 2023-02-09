@@ -71,13 +71,21 @@ function PostedReply() {
   };
   
   //delete Reply
-  const deleteReply = (id) => {
-    axios
-    .delete(`http://localhost:3001/comments/${id}`)
-    .then((res) => {
-      setComments(comments.filter((reply) => reply.id !== id));
-    })
-    .catch((error) => console.error(error));
+  const deleteReply = async (replyId, commentId) => {
+    console.log("HERE IS replyId =", replyId, "HERE IS commentId =", commentId)
+    try {
+      const res = await axios.get(`http://localhost:3001/comments/${commentId}`);
+      const comment = res.data;
+  
+      const updatedReplies = comment.replies.filter(reply => reply.id !== replyId);
+  
+      await axios.put(`http://localhost:3001/comments/${commentId}`, {
+        ...comment,
+        replies: updatedReplies
+      });
+    } catch (err) {
+      console.error(err);
+    }
   };
   
   return (
@@ -248,7 +256,7 @@ function PostedReply() {
                       {modal && (
                         <DeleteModal
                           deleteReplyHandler={deleteReply}
-                          // commentId={comments.id}
+                          commentId={comment.id}
                           replyId={reply.id}
                           isOpen={setModal}
                           toggleModal={handleState}

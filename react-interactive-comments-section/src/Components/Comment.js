@@ -80,6 +80,25 @@ export default function Comment() {
       .catch((error) => console.error(error));
   };
 
+  //Update comment
+// const updateComment = async = (commentId) => {
+//   try {
+//     axios.get(`http://localhost:3001/comments/${commentId}`)
+//     const comment = res.data;
+
+//     await axios.put(`http://localhost:3001/comments/${commentId}`, {
+//       ...comment,
+//     content: })
+//   }
+// }
+// const [updatedComment, setUpdatedComment] = useState('');
+
+const handleChange = (event) => {
+  console.log(event.target.value);
+
+}
+
+
 
   return (
     <div>
@@ -215,12 +234,15 @@ export default function Comment() {
                         className="comment-edit-form-field"
                         type="text"
                         defaultValue={comment.content}
+                        onChange={handleChange}
+
                       />
 
                       <input
                         className="update-btn"
                         type="submit"
                         value="UPDATE"
+                    
                       />
                     </form>
                   ) : (

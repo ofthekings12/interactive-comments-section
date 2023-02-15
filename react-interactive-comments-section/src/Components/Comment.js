@@ -76,25 +76,32 @@ export default function Comment() {
       .delete(`http://localhost:3001/comments/${commentId}`)
       .then(res => {
         setComments(comments.filter(comment => comment.id !== commentId))
-      })
+      }
+        
+      )
       .catch((error) => console.error(error));
   };
 
   //Update comment
-// const updateComment = async = (commentId) => {
-//   try {
-//     axios.get(`http://localhost:3001/comments/${commentId}`)
-//     const comment = res.data;
+const updateComment = (commentId) => {
+  try {
+    axios.get(`http://localhost:3001/comments/${commentId}`)
+    const comment = res.data;
+    console.log(comment, 'ere')
 
-//     await axios.put(`http://localhost:3001/comments/${commentId}`, {
-//       ...comment,
-//     content: })
-//   }
-// }
-// const [updatedComment, setUpdatedComment] = useState('');
+    axios.put(`http://localhost:3001/comments/${commentId}`, {
+      ...comment,
+    content: updatedComment})
+  } catch (err) {
+    console.error(err)
+  }
+}
+const [updatedComment, setUpdatedComment] = useState('');
 
 const handleChange = (event) => {
-  console.log(event.target.value);
+  
+  setUpdatedComment(event.target.value);
+  console.log(updatedComment,'here');
 
 }
 
@@ -233,15 +240,19 @@ const handleChange = (event) => {
                       <textarea
                         className="comment-edit-form-field"
                         type="text"
-                        defaultValue={comment.content}
+                        updatedcomment={updatedComment}
                         onChange={handleChange}
+                        defaultValue={comment.content}
 
                       />
+                    
+
 
                       <input
                         className="update-btn"
                         type="submit"
                         value="UPDATE"
+                        onClick={updateComment}
                     
                       />
                     </form>

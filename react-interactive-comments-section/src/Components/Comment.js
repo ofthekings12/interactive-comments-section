@@ -83,28 +83,22 @@ export default function Comment() {
   };
 
   //Update comment
-const updateComment = (commentId) => {
-  try {
-    axios.get(`http://localhost:3001/comments/${commentId}`)
-    const comment = res.data;
-    console.log(comment, 'ere')
-
-    axios.put(`http://localhost:3001/comments/${commentId}`, {
-      ...comment,
-    content: updatedComment})
-  } catch (err) {
-    console.error(err)
-  }
-}
-const [updatedComment, setUpdatedComment] = useState('');
-
-const handleChange = (event) => {
+  const updateComment = async (commentId, updatedComment) => {
+    try {
+      const { data: comment } = await axios.get(`http://localhost:3001/comments/${commentId}`);
+      const updated = { ...comment, content: updatedComment };
+      await axios.put(`http://localhost:3001/comments/${commentId}`, updated);
+      console.log(updated, 'updated comment');
+    } catch (err) {
+      console.error(err);
+    }
+  };
   
-  setUpdatedComment(event.target.value);
-  console.log(updatedComment,'here');
-
-}
-
+  const [updatedComment, setUpdatedComment] = useState('');
+  
+  const handleChange = (event) => {
+    setUpdatedComment(event.target.value);
+  };
 
 
   return (
@@ -240,7 +234,6 @@ const handleChange = (event) => {
                       <textarea
                         className="comment-edit-form-field"
                         type="text"
-                        updatedcomment={updatedComment}
                         onChange={handleChange}
                         defaultValue={comment.content}
 
@@ -252,7 +245,10 @@ const handleChange = (event) => {
                         className="update-btn"
                         type="submit"
                         value="UPDATE"
-                        onClick={updateComment}
+                        onClick={(event) => {
+                          event.preventDefault()
+                          updateComment(comment.id, updatedComment);
+                        }}
                     
                       />
                     </form>

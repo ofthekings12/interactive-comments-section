@@ -72,6 +72,7 @@ export default function Comment() {
 
   //Delete comment
   const deleteComment = (commentId) => {
+    console.log(commentId, 'here!')
     axios
       .delete(`http://localhost:3001/comments/${commentId}`)
       .then(res => {
@@ -88,7 +89,7 @@ export default function Comment() {
       const { data: comment } = await axios.get(`http://localhost:3001/comments/${commentId}`);
       const updated = { ...comment, content: updatedComment };
       await axios.put(`http://localhost:3001/comments/${commentId}`, updated);
-      console.log(updated, 'updated comment');
+      setComments(comments.filter(c => c.id !== commentId ? updatedComment : c));
     } catch (err) {
       console.error(err);
     }
@@ -140,7 +141,7 @@ export default function Comment() {
                           alt="userAvatar"
                         />
                         <div className="user-handle" key={comment.id}>
-                          {comment.user.username}
+                          {currentUser ? comment.user.username : "Unknown User"}
                         </div>
 
                         <div className="you">you</div>
@@ -150,7 +151,7 @@ export default function Comment() {
                         </div>
                       </div>
                       {/* edit & delete */}
-                      <div className="editDelete">
+                      <div className="editDelete" key={comment.id}>
                         <div className="delete" onClick={toggleModal}>
                           <svg
                             className="delete-icon"
@@ -230,11 +231,12 @@ export default function Comment() {
 
                   {/* editform */}
                   {showEditForm === comment.id ? (
-                    <form className="edit-form">
+                    <form className="edit-form" >
                       <textarea
                         className="comment-edit-form-field"
                         type="text"
                         onChange={handleChange}
+
                         defaultValue={comment.content}
 
                       />
@@ -260,7 +262,7 @@ export default function Comment() {
               </div>
               {showReply === comment.id && <ReplyForm commentId={comment.id} />}
               {modal && <DeleteModal 
-              deleteHandler={deleteComment} 
+              deleteHandler={() => deleteComment(comment.id)} 
               commentId={comment.id} isOpen={setModal} toggleModal={handleState} />}
               {comment.replies.length > 0 ?
               <PostedReply commentId={comment.id} replyId={comment.replies.id}/> : null

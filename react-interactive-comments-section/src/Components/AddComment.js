@@ -45,19 +45,21 @@ function AddComment() {
       console.error(err);
     }
   }
-
   
   return (
     <div>
       <div className="add-comment">
-        {image && <img className="avatar" src={image} alt="CurrentUser" />}
+        {image && <img className="avatar" src={image} alt="CurrentUser" />
+        }
         <form className="form" onSubmit={submitComment}>
           <textarea
             className="comment-field"
             type="text"
             placeholder="Add a comment..."
             value={comment}
-            onChange={(e) => setComment(e.target.value)}
+            onChange={(e) => setComment(e.target.value)
+              
+            }
           />
           <input className="submit-btn" type="submit" value="SEND" />
         </form>

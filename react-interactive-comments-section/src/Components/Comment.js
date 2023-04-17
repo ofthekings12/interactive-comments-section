@@ -6,7 +6,6 @@ import axios from "axios";
 import DeleteModal from "./DeleteModal";
 
 export default function Comment() {
-
   //Fetch currentUser
 
   const [currentUser, setCurrentUser] = useState(null);
@@ -57,7 +56,6 @@ export default function Comment() {
     }
   };
 
-
   //useState to toggle editForm
 
   const [showEditForm, setShowEditForm] = useState(false);
@@ -71,43 +69,40 @@ export default function Comment() {
   };
 
   //Delete comment
-  const deleteComment = (commentId) => {
-    console.log(commentId, 'here!')
-    axios
-      .delete(`http://localhost:3001/comments/${commentId}`)
-      .then(res => {
-        setComments(comments.filter(comment => comment.id !== commentId))
-      }
-        
-      )
-      .catch((error) => console.error(error));
+  const deleteComment = async (commentId) => {
+    try {
+      await axios.delete(`http://localhost:3001/comments/${commentId}`);
+      setComments(comments.filter((comment) => comment.id !== commentId));
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   //Update comment
   const updateComment = async (commentId, updatedComment) => {
     try {
-      const { data: comment } = await axios.get(`http://localhost:3001/comments/${commentId}`);
+      const { data: comment } = await axios.get(
+        `http://localhost:3001/comments/${commentId}`
+      );
       const updated = { ...comment, content: updatedComment };
       await axios.put(`http://localhost:3001/comments/${commentId}`, updated);
-      setComments(comments.filter(c => c.id !== commentId ? updatedComment : c));
     } catch (err) {
       console.error(err);
     }
   };
-  
-  const [updatedComment, setUpdatedComment] = useState('');
-  
+
+  const [updatedComment, setUpdatedComment] = useState("");
+
   const handleChange = (event) => {
     setUpdatedComment(event.target.value);
   };
 
-
   return (
     <div>
       {comments &&
-        comments.map((comment, index) => {
+        comments.map((comment) => {
           return (
-            <div className="comment-reply-container" key={index}>
+            <div className="comment-reply-container" key={comment.id}>
               <div className="comment" key={comment.id}>
                 <div className="vote">
                   <svg
@@ -141,17 +136,15 @@ export default function Comment() {
                           alt="userAvatar"
                         />
                         <div className="user-handle" key={comment.id}>
-                          {currentUser ? comment.user.username : "Unknown User"}
+                          {comment.user.username}
                         </div>
 
                         <div className="you">you</div>
 
-                        <div className="created-at">
-                          {comment.createdAt}
-                        </div>
+                        <div className="created-at">{comment.createdAt}</div>
                       </div>
                       {/* edit & delete */}
-                      <div className="editDelete" key={comment.id}>
+                      <div className="editDelete">
                         <div className="delete" onClick={toggleModal}>
                           <svg
                             className="delete-icon"
@@ -231,27 +224,22 @@ export default function Comment() {
 
                   {/* editform */}
                   {showEditForm === comment.id ? (
-                    <form className="edit-form" >
+                    <form className="edit-form">
                       <textarea
                         className="comment-edit-form-field"
                         type="text"
                         onChange={handleChange}
-
                         defaultValue={comment.content}
-
                       />
-                    
-
 
                       <input
                         className="update-btn"
                         type="submit"
                         value="UPDATE"
                         onClick={(event) => {
-                          event.preventDefault()
+                          event.preventDefault();
                           updateComment(comment.id, updatedComment);
                         }}
-                    
                       />
                     </form>
                   ) : (
@@ -261,16 +249,23 @@ export default function Comment() {
                 </div>
               </div>
               {showReply === comment.id && <ReplyForm commentId={comment.id} />}
-              {modal && <DeleteModal 
-              deleteHandler={() => deleteComment(comment.id)} 
-              commentId={comment.id} isOpen={setModal} toggleModal={handleState} />}
-              {comment.replies.length > 0 ?
-              <PostedReply commentId={comment.id} replyId={comment.replies.id}/> : null
-              }
+              {modal && (
+                <DeleteModal
+                  deleteHandler={deleteComment}
+                  commentId={comment.id}
+                  isOpen={setModal}
+                  toggleModal={handleState}
+                />
+              )}
+              {comment.replies.length > 0 ? (
+                <PostedReply
+                  commentId={comment.id}
+                  replyId={comment.replies.id}
+                />
+              ) : null}
             </div>
           );
         })}
-
     </div>
   );
 }

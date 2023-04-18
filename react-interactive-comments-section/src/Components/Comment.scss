@@ -151,7 +151,7 @@ $white: hsl(0, 0%, 100%);
 
 // RESPONSIVE DESIGN
 
-@media (max-width: 700px) {
+@media (max-width: 375px) {
   .comment {
     display: flex;
     flex-direction: column;

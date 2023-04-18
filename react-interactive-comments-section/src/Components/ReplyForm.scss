@@ -54,7 +54,7 @@ $white: hsl(0, 0%, 100%);
   cursor: pointer;
 }
 
-.submit-btn {
+.reply-submit-btn {
   height: 42px;
   width: 90px;
   background-color: $moderate-blue;
@@ -70,4 +70,36 @@ $white: hsl(0, 0%, 100%);
 
 .submit-btn:hover {
   filter: opacity(60%);
+}
+
+@media (max-width: 375px) {
+  .add-reply {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    min-height: 150px;
+  }
+
+  .reply-field {
+    width: 300px;
+    position: relative;
+    bottom: 20px;
+    left: 25px;
+  }
+
+  .reply-submit-btn {
+    position: relative;
+    top: 88px;
+    right: 75px;
+  }
+
+  .reply-avatar {
+    height: 35px;
+    position: relative;
+    top: 85px;
+    left: 75px;
+
+  }
 }

@@ -11,7 +11,7 @@ function ReplyForm({ commentId }) {
       <img className="reply-avatar" src={avatar} alt="CurrentUser" />
       <form className="form">
        <textarea className="reply-field" type="text"  placeholder="Reply to this comment..."/>
-        <input className="submit-btn" type="submit" value="REPLY"/>
+        <input className="reply-submit-btn" type="submit" value="REPLY"/>
       </form>
     </div>
   )

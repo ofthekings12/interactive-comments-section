@@ -48,13 +48,35 @@ $white: hsl(0, 0%, 100%);
 }
 
 .prf-btn {
-height: 42px;
-width: 90px;
-background-color: $moderate-blue;
-color: $white;
-border: none;
-border-radius: 8px;
-margin-left: 10px;
-font-family: "Rubik,", sans-serif;
+  height: 42px;
+  width: 90px;
+  background-color: $moderate-blue;
+  color: $white;
+  border: none;
+  border-radius: 8px;
+  margin-left: 10px;
+  font-family: "Rubik,", sans-serif;
+}
 
+@media (max-width: 375px) {
+  .posted-reply-form {
+    flex-direction: column-reverse;
+    width: 280px;
+    height: 120px;
+  }
+
+  .prf-form-field {
+    position: relative;
+    left: 50px;
+    top: 50px;
+    height: 60px;
+    width: 290px;
+    resize: none;
+  }
+
+  .prf-btn {
+    position: relative;
+    top: 135px;
+    right: 50px;
+  }
 }

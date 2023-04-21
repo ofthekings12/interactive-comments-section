@@ -62,13 +62,13 @@ $white: hsl(0, 0%, 100%);
   .posted-reply-form {
     flex-direction: column-reverse;
     width: 280px;
-    height: 120px;
+    height: 130px;
   }
 
   .prf-form-field {
     position: relative;
+    bottom: 10px;
     left: 50px;
-    top: 50px;
     height: 60px;
     width: 290px;
     resize: none;
@@ -76,7 +76,14 @@ $white: hsl(0, 0%, 100%);
 
   .prf-btn {
     position: relative;
-    top: 135px;
+    top: 80px;
     right: 50px;
+  }
+
+  .prf-avatar {
+    height: 35px;
+    position:relative;
+    top: 0px;
+    right: 135px;
   }
 }

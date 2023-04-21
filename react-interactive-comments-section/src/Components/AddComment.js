@@ -49,7 +49,7 @@ function AddComment() {
   return (
     <div>
       <div className="add-comment">
-        {image && <img className="avatar" src={image} alt="CurrentUser" />
+        {image && <img className="add-comment-avatar" src={image} alt="CurrentUser" />
         }
         <form className="form" onSubmit={submitComment}>
           <textarea

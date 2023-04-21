@@ -29,6 +29,12 @@ $white: hsl(0, 0%, 100%);
   justify-content: flex-start;
 }
 
+.prf-avatar {
+  height: 45px;
+  padding: 0 10px 0 0;
+  margin-bottom: 55px;
+}
+
 .prf-form-field {
   border-color: $light-gray;
   border-radius: 10px;
@@ -58,7 +64,7 @@ $white: hsl(0, 0%, 100%);
   font-family: "Rubik,", sans-serif;
 }
 
-@media (max-width: 375px) {
+@media (max-width: 675px) {
   .posted-reply-form {
     flex-direction: column-reverse;
     width: 280px;
@@ -67,7 +73,7 @@ $white: hsl(0, 0%, 100%);
 
   .prf-form-field {
     position: relative;
-    bottom: 10px;
+    top: 40px;
     left: 50px;
     height: 60px;
     width: 290px;
@@ -76,14 +82,14 @@ $white: hsl(0, 0%, 100%);
 
   .prf-btn {
     position: relative;
-    top: 80px;
+    top: 130px;
     right: 50px;
   }
 
   .prf-avatar {
     height: 35px;
     position:relative;
-    top: 0px;
-    right: 135px;
+    top: 50px;
+    right: 130px;
   }
 }

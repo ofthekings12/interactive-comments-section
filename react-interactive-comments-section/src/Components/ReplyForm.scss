@@ -72,7 +72,7 @@ $white: hsl(0, 0%, 100%);
   filter: opacity(60%);
 }
 
-@media (max-width: 375px) {
+@media (max-width: 675px) {
   .add-reply {
     display: flex;
     flex-direction: row;

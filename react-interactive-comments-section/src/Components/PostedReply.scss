@@ -212,7 +212,7 @@ $white: hsl(0, 0%, 100%);
 
 // RESPONSIVE DESIGN
 
-@media (max-width: 375px) {
+@media (max-width: 675px) {
   .posted-reply {
     display: flex;
     flex-direction: column-reverse;

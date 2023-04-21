@@ -23,7 +23,7 @@ $white: hsl(0, 0%, 100%);
   margin: 10px;
 }
 
-.avatar {
+.add-comment-avatar {
   height: 45px;
   padding: 0 10px 0 0;
   margin-bottom: 55px;
@@ -72,7 +72,7 @@ $white: hsl(0, 0%, 100%);
   filter: opacity(60%);
 }
 
-@media (max-width: 375px) {
+@media (max-width: 675px) {
   .add-comment {
     flex-direction: column-reverse;
     justify-content: space-evenly;
@@ -88,7 +88,7 @@ $white: hsl(0, 0%, 100%);
     left: 50px;
   }
 
-  .avatar {
+  .add-comment-avatar {
     height: 35px;
     position: relative;
     top: 30px;

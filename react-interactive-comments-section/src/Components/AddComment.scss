@@ -71,3 +71,33 @@ $white: hsl(0, 0%, 100%);
 .submit-btn:hover {
   filter: opacity(60%);
 }
+
+@media (max-width: 375px) {
+  .add-comment {
+    flex-direction: column-reverse;
+    justify-content: space-evenly;
+    width: 300px;
+    height: 120px;
+  }
+
+  .comment-field {
+    height: 50px;
+    width: 300px;
+    position: relative;
+    top: 25px;
+    left: 50px;
+  }
+
+  .avatar {
+    height: 35px;
+    position: relative;
+    top: 30px;
+    right: 130px;
+  }
+  
+  .submit-btn {
+    position: relative;
+    top: 100px;
+    right: 50px;
+  }
+}

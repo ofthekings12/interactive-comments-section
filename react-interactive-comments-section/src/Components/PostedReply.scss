@@ -28,6 +28,7 @@ $white: hsl(0, 0%, 100%);
   border-radius: 10px;
   padding: 10px 25px 0px;
   margin-left: auto;
+  contain: content;
 }
 
 .p-r-vote {
@@ -226,6 +227,7 @@ $white: hsl(0, 0%, 100%);
     padding: 0px 0px 0px 0px;
     margin-left: 10px;
     overflow: hidden;
+    contain: content;
   }
 
   .gray-line {
@@ -284,6 +286,7 @@ $white: hsl(0, 0%, 100%);
     align-items: center;
     // width: 510px;
     position: relative;
+
     .p-r-details {
       display: flex;
       flex-direction: row;
@@ -316,8 +319,9 @@ $white: hsl(0, 0%, 100%);
     color: $moderate-blue;
     font-weight: 500;
     position: relative;
-    top: 145px;
+    top: 130px;
     left: 30px;
+    
 
     .p-r-reply-icon {
       margin: 3px 5px 0 0px;
@@ -333,7 +337,7 @@ $white: hsl(0, 0%, 100%);
     .p-r-content {
       font-size: 14px;
       color: $grayish-blue;
-      padding: 10px 0;
+      padding-top: 0px;
       // width: px;
     }
   }
@@ -345,8 +349,8 @@ $white: hsl(0, 0%, 100%);
     font-weight: 500;
     // width: 300px;
     cursor: pointer;
-    position: relative;
-    top: 140px;
+    position: fixed;
+    top: 155px;
  
   }
 

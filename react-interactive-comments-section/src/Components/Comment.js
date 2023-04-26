@@ -144,7 +144,7 @@ export default function Comment() {
                         <div className="created-at">{comment.createdAt}</div>
                       </div>
                       {/* edit & delete */}
-                      <div className="editDelete">
+                      <div className="comment-editDelete">
                         <div className="delete" onClick={toggleModal}>
                           <svg
                             className="delete-icon"

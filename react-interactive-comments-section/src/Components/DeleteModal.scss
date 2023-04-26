@@ -92,6 +92,12 @@ $white: hsl(0, 0%, 100%);
 
 }
 
+@media (max-width: 675px) {
+  .modal, .overlay {
+    z-index: 1;
+  }
+}
+
 
 
 

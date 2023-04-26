@@ -24,10 +24,10 @@ $white: hsl(0, 0%, 100%);
   background-color: $white;
   width: 500px;
   min-height: 120px;
+  // max-height: 200px;
   border-radius: 10px;
   padding: 10px 25px 0px;
   margin-left: auto;
-  overflow: hidden;
 }
 
 .p-r-vote {
@@ -74,6 +74,7 @@ $white: hsl(0, 0%, 100%);
   justify-content: space-between;
   align-items: center;
   width: 442px;
+
 
   .p-r-details {
     display: flex;
@@ -222,7 +223,7 @@ $white: hsl(0, 0%, 100%);
     width: 330px;
     min-height: 190px;
     border-radius: 10px;
-    padding: 0px 0px 0px 0px; 
+    padding: 0px 0px 0px 0px;
     margin-left: 10px;
     overflow: hidden;
   }
@@ -263,31 +264,34 @@ $white: hsl(0, 0%, 100%);
     }
   }
 
-  .p-r-content-header {
-    display: flex;
-    flex-direction: row;
-    margin: 10px 15px;
+  // .p-r-content-header {
+  //   display: flex;
+  //   flex-direction: row;
+  //   margin: 10px 15px;
+    
 
-    .p-r-content {
-      font-size: 14px;
-      color: $grayish-blue;
-      padding: 10px 0;
-    }
-  }
-  
+  //   .p-r-content {
+  //     font-size: 14px;
+  //     color: $grayish-blue;
+  //     padding: 10px 0;
+  //   }
+  // }
+
   .p-r-header {
     display: flex;
-    flex-direction: row;
-    // justify-content: space-between;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-  width: 510px;
-
+    // width: 510px;
+    position: relative;
     .p-r-details {
       display: flex;
       flex-direction: row;
-      justify-content: start;
+      justify-content: flex-start;
       align-items: center;
       width: 100%;
+      overflow: hidden;  
+      position: relative;
     }
 
     .p-r-user-avatar {
@@ -313,19 +317,19 @@ $white: hsl(0, 0%, 100%);
     font-weight: 500;
     position: relative;
     top: 145px;
-    right: 225px;
+    left: 30px;
 
     .p-r-reply-icon {
       margin: 3px 5px 0 0px;
     }
   }
 
-
   .p-r-content-header {
     display: flex;
     flex-direction: column;
     margin: 10px 15px;
-  
+    position: relative;
+
     .p-r-content {
       font-size: 14px;
       color: $grayish-blue;
@@ -337,12 +341,20 @@ $white: hsl(0, 0%, 100%);
   .editDelete {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     font-weight: 500;
-    width: 100%;
+    // width: 300px;
     cursor: pointer;
     position: relative;
-    top: 145px;
-    right: 100px;
+    top: 140px;
+ 
   }
 
+  .edit-form-field {
+    width: 275px;
+  }
+
+  .edit-form {
+    padding-bottom: 0px;
+  }
 }

@@ -45,6 +45,7 @@ function AddComment() {
         replies: []
       })
       setComment("");
+      window.location.reload()
     } catch (err) {
       console.error(err);
     }

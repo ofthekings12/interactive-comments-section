@@ -170,11 +170,11 @@ $white: hsl(0, 0%, 100%);
     justify-content: flex-start;
     align-items: start;
     background-color: $white;
-    width: 300px;
+    width: 310px;
     height: auto;
     border-radius: 10px;
-    padding: 0px 25px;
-    margin: 10px;
+    padding: 10px 20px;
+    // margin: 10px;
     contain: content;
     position: relative;
     // clear: both;
@@ -200,7 +200,7 @@ $white: hsl(0, 0%, 100%);
     font-weight: 500;
     position: relative;
     left: 0;
-    bottom: 0;
+    top: 10px;
   
     .upvote, .downvote {
       fill: #C5C6EF;
@@ -230,7 +230,7 @@ $white: hsl(0, 0%, 100%);
       // margin: 10px;
       font-size: 14px;
       color: $grayish-blue;
-      padding: 10px 5px;
+      padding: 10px 0px;
       // contain: content;
     }
   }
@@ -246,8 +246,9 @@ $white: hsl(0, 0%, 100%);
     justify-content: center;
     color: $moderate-blue;
     font-weight: 500;
-    // position: relative;
-    // top: 135px;
+    position: absolute;
+    bottom: 25px;
+    right: 15px;
     
     .reply-icon{
       margin: 3px 5px 0 0px ;
@@ -266,9 +267,10 @@ $white: hsl(0, 0%, 100%);
       flex-direction: row;
       justify-content: flex-start;
       align-items: center;
-      margin-right: 90px;
-      margin-top: 10px;
-      // padding: 5px;
+      // margin-right: 90px;
+      width: 100%;
+      // margin-top: 10px;
+      padding: 10px 10px 0px 10px;
     }
     
     .user-avatar {
@@ -297,6 +299,7 @@ $white: hsl(0, 0%, 100%);
     right: 10px;
     bottom: 15px;
     padding: 10px;
+    cursor: pointer;
     // min-width: 0;
   }
 

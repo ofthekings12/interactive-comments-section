@@ -220,15 +220,17 @@ $white: hsl(0, 0%, 100%);
     display: flex;
     flex-direction: column-reverse;
     // align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+    align-items: start;
     background-color: $white;
     width: 330px;
     min-height: 190px;
     border-radius: 10px;
-    padding: 0px 0px 0px 0px;
+    padding: 10px 0px;
     margin-left: 10px;
-    overflow: hidden;
+    // overflow: hidden;
     contain: content;
+    position: relative;
   }
 
   .gray-line {
@@ -248,7 +250,7 @@ $white: hsl(0, 0%, 100%);
     background-color: $light-gray;
     border-radius: 5px;
     height: 12px;
-    max-width: 60px;
+    width: 70px;
     color: $moderate-blue;
     font-size: 14px;
     font-weight: 500;
@@ -285,8 +287,8 @@ $white: hsl(0, 0%, 100%);
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    // width: 510px;
-    position: relative;
+    width: 100%;
+    // position: relative;
 
     .p-r-details {
       display: flex;
@@ -295,7 +297,7 @@ $white: hsl(0, 0%, 100%);
       align-items: center;
       width: 100%;
       overflow: hidden;  
-      position: relative;
+      // position: relative;
     }
 
     .p-r-user-avatar {
@@ -319,9 +321,9 @@ $white: hsl(0, 0%, 100%);
     justify-content: center;
     color: $moderate-blue;
     font-weight: 500;
-    position: relative;
-    top: 130px;
-    left: 30px;
+    position: absolute;
+    bottom: 25px;
+    right: 15px;
     
 
     .p-r-reply-icon {
@@ -333,25 +335,33 @@ $white: hsl(0, 0%, 100%);
     display: flex;
     flex-direction: column;
     margin: 10px 15px;
-    position: relative;
+    // padding:10px 10px 0px 10px;
+    // position: relative;
 
     .p-r-content {
       font-size: 14px;
       color: $grayish-blue;
-      padding-top: 0px;
+      padding: 10px 0 10px 0;
+      height: auto;
       // width: px;
     }
   }
 
+  // .p-r-details {
+  //   // padding: 10px 10px 0px 10px;
+  // }
+
   .editDelete {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    font-weight: 500;
+    // display: flex;
+    // flex-direction: row;
+    // justify-content: center;
+    // font-weight: 500;
     // width: 300px;
     cursor: pointer;
-    position: fixed;
-    top: 155px;
+    position: absolute;
+    right: 15px;
+    bottom: 25px;
+    // top: 155px;
  
   }
 
@@ -361,5 +371,6 @@ $white: hsl(0, 0%, 100%);
 
   .edit-form {
     padding-bottom: 0px;
+    contain: content;
   }
 }

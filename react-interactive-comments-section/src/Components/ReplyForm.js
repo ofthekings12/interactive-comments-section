@@ -14,26 +14,19 @@ function ReplyForm({ commentId }) {
   //fetch existing replies
   const [existingReplies, setExistingReplies] = useState([]);
 
-  // useEffect(() => {
-  //   axios.get(`http://localhost:3001/comments/${commentId}`)
-  //   .then((res) => {
-  //     setExistingReplies(res.data["replies"])
-  //     console.log(res.data["replies"], "HEELLOO")
-  //   })
-  //   .catch((error) => {
-  //     console.error(error)
-  //   })
-  // },[])
-
 
   //fetch existing comment
   const [existingComment, setExistingComment] = useState({});
+
+  //fetch replyingTo username
+  const [replyingToUsername, setReplyingToUsername] = useState("");
 
   useEffect(() => {
     axios.get(`http://localhost:3001/comments/${commentId}`)
     .then((res) => {
       setExistingComment(res.data)
       setExistingReplies(res.data["replies"])
+      setReplyingToUsername(res.data.user.username)
       console.log(res.data["replies"], "HEELLOO")
     })
     .catch((error) => {
@@ -54,7 +47,7 @@ function ReplyForm({ commentId }) {
           content: reply,
           createdAt: 'now',
           score: 0,
-          replyingTo: 'username',
+          replyingTo: replyingToUsername,
           user: {
             image: {
               png: avatar

@@ -32,6 +32,7 @@ function DeleteModal({ deleteHandler, deleteReplyHandler, replyId, commentId, is
               deleteHandler(commentId);
               console.log(commentId, 'here')
             }
+            window.location.reload()
           }}>YES, DELETE</button>
         </div>
 

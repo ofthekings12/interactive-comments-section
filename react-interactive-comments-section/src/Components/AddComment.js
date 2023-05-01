@@ -4,6 +4,10 @@ import axios from "axios";
 
 function AddComment() {
 
+  //fetching comments
+  // useEffect(() => {
+
+  // })
   
   // fetching currentUser avatar and username
   const [image, setImage] = useState(null);

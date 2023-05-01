@@ -73,9 +73,11 @@ export default function Comment() {
     try {
       await axios.delete(`http://localhost:3001/comments/${commentId}`);
       setComments(comments.filter((comment) => comment.id !== commentId));
+      
     } catch (error) {
       console.error(error);
     }
+    window.location.reload()
   };
 
   //Update comment
@@ -126,17 +128,17 @@ export default function Comment() {
                 {/* <div className='comment-content-header-container'> */}
                 <div className="comment-content-header">
                   {currentUser &&
-                  comment.user.username === currentUser.username ? (
+                  comment?.user?.username === currentUser.username ? (
                     // beginning of logged in user
                     <div className="comment-header">
                       <div className="comment-details">
                         <img
                           className="user-avatar"
-                          src={comment.user.image.png}
+                          src={comment?.user?.image?.png}
                           alt="userAvatar"
                         />
                         <div className="user-handle" key={comment.id}>
-                          {comment.user.username}
+                          {comment?.user?.username}
                         </div>
 
                         <div className="you">you</div>
@@ -190,11 +192,11 @@ export default function Comment() {
                         <img
                           className="user-avatar"
                           key={comment.id}
-                          src={comment.user.image.png}
+                          src={comment?.user?.image?.png}
                           alt="userAvatar"
                         />
                         <div className="user-handle">
-                          {comment.user.username}
+                          {comment?.user?.username}
                         </div>
                         <div className="created-at">{comment.createdAt}</div>
                       </div>

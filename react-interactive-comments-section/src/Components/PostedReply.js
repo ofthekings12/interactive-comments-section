@@ -267,6 +267,7 @@ function PostedReply({commentId}) {
                       </div>
                       {showPostedReplyForm === reply.id && (
                         <PostedReplyForm
+                        commentId={commentId}
                           key={reply.id}
                           id={reply.id}
                           togglePostedReplyForm={togglePostedReplyForm}

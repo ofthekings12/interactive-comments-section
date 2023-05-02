@@ -19,21 +19,7 @@
         },
         "username": "amyrobson"
       },
-      "replies": [
-        {
-          "id": "1-1682999817156",
-          "content": "this is a reply to the first comment",
-          "createdAt": "now",
-          "score": 0,
-          "replyingTo": "amyrobson",
-          "user": {
-            "image": {
-              "png": "https://github.com/ofthekings12/interactive-comments-section/blob/main/react-interactive-comments-section/src/images/avatars/image-juliusomo.png?raw=true"
-            },
-            "username": "juliusomo"
-          }
-        }
-      ]
+      "replies": []
     },
     {
       "id": 2,
@@ -77,19 +63,6 @@
           }
         }
       ]
-    },
-    {
-      "id": 3,
-      "content": "18263812763871236  Along with having normal strings, template literals can also contain other parts called placeholders, which are embedded expressions delimited by a dollar sign and curly braces: ${expression}. The strings and placeholders get passed to a function — either a default function, or a function you supply. The default function (when you don't supply your own) just performs string interpolation to do substitution of the placeholders and then concatenate the parts into a single string.\n\nTo supply a function of your own, precede the template literal with a function name; the result is called a tagged template. In that case, the template literal is passed to your tag function, where you can then perform whatever operations you want on the different parts of the template literal.\n\nTo escape a backtick in a template literal, put a backslash (\\) before the backtick.",
-      "createdAt": "now",
-      "score": 0,
-      "user": {
-        "image": {
-          "png": "https://github.com/ofthekings12/interactive-comments-section/blob/main/react-interactive-comments-section/src/images/avatars/image-juliusomo.png?raw=true"
-        },
-        "username": "juliusomo"
-      },
-      "replies": []
     }
   ]
 }

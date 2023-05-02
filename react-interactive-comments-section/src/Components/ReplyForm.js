@@ -75,12 +75,13 @@ function ReplyForm({ commentId }) {
           
       }]
       });
-      setReply("");
+      setReply(existingReplies);
       window.location.reload()
     } catch (err) {
       console.error(err);
     }
   };
+
 
   return (
     <div className="add-reply" key={commentId}>

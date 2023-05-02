@@ -100,6 +100,7 @@ function PostedReply({commentId}) {
         ...comment,
         replies: updatedReplies
       });
+      setReplies(updatedReplies);
     } catch (err) {
       console.error(err);
     }

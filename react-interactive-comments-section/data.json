@@ -19,7 +19,21 @@
         },
         "username": "amyrobson"
       },
-      "replies": []
+      "replies": [
+        {
+          "id": "1-1682999817156",
+          "content": "this is a reply to the first comment",
+          "createdAt": "now",
+          "score": 0,
+          "replyingTo": "amyrobson",
+          "user": {
+            "image": {
+              "png": "https://github.com/ofthekings12/interactive-comments-section/blob/main/react-interactive-comments-section/src/images/avatars/image-juliusomo.png?raw=true"
+            },
+            "username": "juliusomo"
+          }
+        }
+      ]
     },
     {
       "id": 2,
@@ -35,7 +49,7 @@
       },
       "replies": [
         {
-          "id": 3,
+          "id": "2-1",
           "content": "If you're still new, I'd recommend focusing on the fundamentals of HTML, CSS, and JS before considering React. It's very tempting to jump ahead but lay a solid foundation first.",
           "createdAt": "1 week ago",
           "score": 4,
@@ -49,7 +63,7 @@
           }
         },
         {
-          "id": 4,
+          "id": "2-2",
           "content": "I couldn't agree more with this. Everything moves so fast and it always seems like everyone knows the newest library/framework. But the fundamentals are what stay constant.",
           "createdAt": "2 days ago",
           "score": 2,

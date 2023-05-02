@@ -4,7 +4,8 @@ import axios from "axios";
 import DeleteModal from "./DeleteModal";
 import PostedReplyForm from "./PostedReplyForm";
 
-function PostedReply() {
+function PostedReply({commentId}) {
+
 
   
   //Fetch currentUser
@@ -22,13 +23,29 @@ function PostedReply() {
   }, []);
   
   //Fetch comments/replies/data from JSON Server
-  const [comments, setComments] = useState([]);
+  // const [comments, setComments] = useState([]);
+  
+  // useEffect(() => {
+  //   axios
+  //   .get("http://localhost:3001/comments")
+  //   .then((res) => {
+  //     setComments(res.data);
+  //   })
+  //   .catch((error) => {
+  //     console.error(error);
+  //   });
+  // }, []);
+
+
+  //fetch replies
+  const [replies, setReplies] = useState([]);
   
   useEffect(() => {
     axios
-    .get("http://localhost:3001/comments")
+    .get(`http://localhost:3001/comments/${commentId}`)
     .then((res) => {
-      setComments(res.data);
+      setReplies(res.data["replies"]);
+      console.log(res.data["replies"], "123456yaya")
     })
     .catch((error) => {
       console.error(error);
@@ -88,14 +105,16 @@ function PostedReply() {
     }
   };
   
-  return (
-    <div>
-      {comments &&
-        comments.map((comment, index) => {
+  // return (
+  //   <div>
+  //     {comments &&
+  //       comments.map((comment) => {
           return (
-            <div key={index}>
-              {comment.replies &&
-                comment.replies.map((reply) => {
+            <div key={commentId}>
+              {replies &&
+                replies.map((reply) => {
+                  console.log(commentId, 'here yo', reply.id.charAt(0), 'yesyes')
+                  if (reply.id.charAt(0) == commentId) {
                   return (
                     <div className="gray-line" key={reply.id}>
                       <div className="posted-reply">
@@ -160,7 +179,7 @@ function PostedReply() {
                                 {/* editbutton */}
                                 <div
                                   className="edit"
-                                  key={comment.id}
+                                  key={commentId}
                                   onClick={() => {
                                     toggleShowEditForm(reply.id);
                                   }}
@@ -199,7 +218,7 @@ function PostedReply() {
                               </div>
                               <div
                                 className="p-r-reply"
-                                key={comment.id}
+                                key={commentId}
                                 onClick={() => {
                                   togglePostedReplyForm(reply.id);
                                 }}
@@ -256,7 +275,7 @@ function PostedReply() {
                       {modal && (
                         <DeleteModal
                           deleteReplyHandler={deleteReply}
-                          commentId={comment.id}
+                          commentId={commentId}
                           replyId={reply.id}
                           isOpen={setModal}
                           toggleModal={handleState}
@@ -264,12 +283,15 @@ function PostedReply() {
                       )}
                     </div>
                   );
+                      } else {
+                        return null;
+                      }
                 })}
             </div>
           );
-        })}
-    </div>
-  );
+  //       })}
+  //   </div>
+  // );
 }
 
 export default PostedReply;

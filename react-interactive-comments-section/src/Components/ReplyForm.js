@@ -38,17 +38,19 @@ function ReplyForm({ commentId }) {
   const [replyingToUsername, setReplyingToUsername] = useState("");
 
   useEffect(() => {
+    console.log(commentId, "COMMENT ID HERE")
     axios.get(`http://localhost:3001/comments/${commentId}`)
     .then((res) => {
       setExistingComment(res.data)
       setExistingReplies(res.data["replies"])
+      // console.log(res.data.id, 'the data')
       setReplyingToUsername(res.data.user.username)
       console.log(res.data["replies"], "HEELLOO")
     })
     .catch((error) => {
       console.error(error)
     })
-  },[])
+  },[commentId])
 
   const submitReply = async (e) => {
     e.preventDefault();

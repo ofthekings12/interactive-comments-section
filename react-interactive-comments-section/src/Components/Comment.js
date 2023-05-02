@@ -63,8 +63,10 @@ export default function Comment() {
   const toggleShowEditForm = (id) => {
     if (showEditForm === id) {
       setShowEditForm(null);
+      setUpdatedComment("");
     } else {
       setShowEditForm(id);
+      setUpdatedComment(comments.find(comment => comment.id === id).content)
     }
   };
 
@@ -73,11 +75,10 @@ export default function Comment() {
     try {
       await axios.delete(`http://localhost:3001/comments/${commentId}`);
       setComments(comments.filter((comment) => comment.id !== commentId));
-      
     } catch (error) {
       console.error(error);
     }
-    window.location.reload()
+    window.location.reload();
   };
 
   //Update comment
@@ -86,9 +87,11 @@ export default function Comment() {
       const { data: comment } = await axios.get(
         `http://localhost:3001/comments/${commentId}`
       );
-      const updated = { ...comment, content: updatedComment };
-      await axios.put(`http://localhost:3001/comments/${commentId}`, updated);
-      window.location.reload()
+      if (document.getElementById("comment-edit-form-field") !== updatedComment) {
+        const updated = { ...comment, content: updatedComment };
+        await axios.put(`http://localhost:3001/comments/${commentId}`, updated);
+        window.location.reload();
+      }
     } catch (err) {
       console.error(err);
     }

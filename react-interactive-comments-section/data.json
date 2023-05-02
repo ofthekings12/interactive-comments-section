@@ -63,19 +63,6 @@
           }
         }
       ]
-    },
-    {
-      "id": 3,
-      "content": "HELLOOO YAYYOO this is edited 123 yayaya again",
-      "createdAt": "now",
-      "score": 0,
-      "user": {
-        "image": {
-          "png": "https://github.com/ofthekings12/interactive-comments-section/blob/main/react-interactive-comments-section/src/images/avatars/image-juliusomo.png?raw=true"
-        },
-        "username": "juliusomo"
-      },
-      "replies": []
     }
   ]
 }

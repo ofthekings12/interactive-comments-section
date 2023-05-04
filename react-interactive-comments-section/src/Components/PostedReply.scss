@@ -19,12 +19,10 @@ $white: hsl(0, 0%, 100%);
 .posted-reply {
   display: flex;
   flex-direction: row;
-  // align-items: center;
   justify-content: space-between;
   background-color: $white;
   width: 500px;
   min-height: 120px;
-  // max-height: 200px;
   border-radius: 10px;
   padding: 10px 25px 0px;
   margin-left: auto;
@@ -76,7 +74,6 @@ $white: hsl(0, 0%, 100%);
   justify-content: space-between;
   align-items: center;
   width: 442px;
-
 
   .p-r-details {
     display: flex;
@@ -219,7 +216,6 @@ $white: hsl(0, 0%, 100%);
   .posted-reply {
     display: flex;
     flex-direction: column-reverse;
-    // align-items: center;
     justify-content: flex-start;
     align-items: start;
     background-color: $white;
@@ -228,7 +224,6 @@ $white: hsl(0, 0%, 100%);
     border-radius: 10px;
     padding: 10px 0px;
     margin-left: 10px;
-    // overflow: hidden;
     contain: content;
     position: relative;
   }
@@ -245,7 +240,6 @@ $white: hsl(0, 0%, 100%);
     align-items: center;
     justify-content: space-evenly;
     padding: 10px;
-    // margin-top: 10px;
 
     background-color: $light-gray;
     border-radius: 5px;
@@ -269,26 +263,12 @@ $white: hsl(0, 0%, 100%);
     }
   }
 
-  // .p-r-content-header {
-  //   display: flex;
-  //   flex-direction: row;
-  //   margin: 10px 15px;
-    
-
-  //   .p-r-content {
-  //     font-size: 14px;
-  //     color: $grayish-blue;
-  //     padding: 10px 0;
-  //   }
-  // }
-
   .p-r-header {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    // position: relative;
 
     .p-r-details {
       display: flex;
@@ -296,8 +276,7 @@ $white: hsl(0, 0%, 100%);
       justify-content: flex-start;
       align-items: center;
       width: 100%;
-      overflow: hidden;  
-      // position: relative;
+      overflow: hidden;
     }
 
     .p-r-user-avatar {
@@ -324,7 +303,6 @@ $white: hsl(0, 0%, 100%);
     position: absolute;
     bottom: 25px;
     right: 15px;
-    
 
     .p-r-reply-icon {
       margin: 3px 5px 0 0px;
@@ -335,34 +313,20 @@ $white: hsl(0, 0%, 100%);
     display: flex;
     flex-direction: column;
     margin: 10px 15px;
-    // padding:10px 10px 0px 10px;
-    // position: relative;
 
     .p-r-content {
       font-size: 14px;
       color: $grayish-blue;
       padding: 10px 0 10px 0;
       height: auto;
-      // width: px;
     }
   }
 
-  // .p-r-details {
-  //   // padding: 10px 10px 0px 10px;
-  // }
-
   .editDelete {
-    // display: flex;
-    // flex-direction: row;
-    // justify-content: center;
-    // font-weight: 500;
-    // width: 300px;
     cursor: pointer;
     position: absolute;
     right: 15px;
     bottom: 25px;
-    // top: 155px;
- 
   }
 
   .edit-form-field {

@@ -98,16 +98,15 @@ function PostedReply({ commentId }) {
 
   const updateReply = async (commentId, replyId, updatedReply) => {
     try {
-      const res = await axios.get(
-        `http://localhost:3001/comments/${commentId}`
-      );
+      const res = await axios.get(`http://localhost:3001/comments/${commentId}`);
       const comment = res.data;
       const replies = comment.replies;
-
+  
       const replyToUpdate = replies.find((reply) => reply.id === replyId);
-
-      replyToUpdate.content = updatedReply;
-
+      if (updatedReply.trim() !== '' && updatedReply !== replyToUpdate.content) {
+        replyToUpdate.content = updatedReply;
+      }
+  
       await axios.put(`http://localhost:3001/comments/${commentId}`, comment);
       setReplies(replies);
       window.location.reload();
@@ -115,6 +114,27 @@ function PostedReply({ commentId }) {
       console.error(err);
     }
   };
+
+// const updateReply = async (commentId, replyId, updatedReply) => {
+//   try {
+//     const res = await axios.get(`http://localhost:3001/comments/${commentId}`);
+//     const comment = res.data;
+//     const replies = comment.replies;
+
+//     const replyToUpdate = replies.find((reply) => reply.id === replyId);
+//     const editFormField = document.getElementById('comment-edit-form-field');
+//     console.log(editFormField, 'EDITFORMFIELD')
+//     if (editFormField && editFormField.value !== replyToUpdate.content) {
+//       replyToUpdate.content = updatedReply;
+//       await axios.put(`http://localhost:3001/comments/${commentId}`, comment);
+//       setReplies(replies);
+//       // window.location.reload();
+//     }
+//     // window.location.reload();
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
 
   return (
     <div key={commentId}>
@@ -251,7 +271,7 @@ function PostedReply({ commentId }) {
                         <textarea
                           className="edit-form-field"
                           type="text"
-                          defaultValue={`@${reply.replyingTo} ${reply.content}`}
+                          defaultValue={reply.content}
                           onChange={handleChange}
                         />
 

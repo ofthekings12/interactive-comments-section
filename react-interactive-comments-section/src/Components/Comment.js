@@ -89,10 +89,10 @@ export default function Comment() {
       );
       if (
         document.getElementById("comment-edit-form-field") !== updatedComment
-      ) {
+        ) {
         const updated = { ...comment, content: updatedComment };
         await axios.put(`http://localhost:3001/comments/${commentId}`, updated);
-        window.location.reload();
+        // window.location.reload();
       }
     } catch (err) {
       console.error(err);

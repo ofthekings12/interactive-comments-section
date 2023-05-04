@@ -27,10 +27,8 @@ function DeleteModal({ deleteHandler, deleteReplyHandler, replyId, commentId, is
           <button className="yes-delete" onClick={() => {
             if (replyId && commentId) {
               deleteReplyHandler(replyId, commentId);
-              console.log(commentId, 'here')
             } else if (commentId) {
               deleteHandler(commentId);
-              console.log(commentId, 'here')
             }
             window.location.reload()
           }}>YES, DELETE</button>

@@ -45,7 +45,6 @@ function PostedReply({commentId}) {
     .get(`http://localhost:3001/comments/${commentId}`)
     .then((res) => {
       setReplies(res.data["replies"]);
-      console.log(res.data["replies"], "123456yaya")
     })
     .catch((error) => {
       console.error(error);
@@ -89,7 +88,6 @@ function PostedReply({commentId}) {
   
   //delete Reply
   const deleteReply = async (replyId, commentId) => {
-    console.log("HERE IS replyId =", replyId, "HERE IS commentId =", commentId)
     try {
       const res = await axios.get(`http://localhost:3001/comments/${commentId}`);
       const comment = res.data;
@@ -138,7 +136,6 @@ const updateReply = async (commentId, replyId, updatedReply) => {
             <div key={commentId}>
               {replies &&
                 replies.map((reply) => {
-                  console.log(commentId, 'here yo', reply.id.charAt(0), 'yesyes')
                   if (reply.id.charAt(0) == commentId) {
                   return (
                     <div className="gray-line" key={reply.id}>

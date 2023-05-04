@@ -48,14 +48,11 @@ function PostedReplyForm({ replyId, commentId }) {
   const [replyingToUsername2, setReplyingToUsername2] = useState("");
 
   useEffect(() => {
-    console.log(commentId, "COMMENT ID HERE")
     axios.get(`http://localhost:3001/comments/${commentId}`)
     .then((res) => {
       setExistingComment2(res.data)
       setExistingReplies2(res.data["replies"])
-      // console.log(res.data.id, 'the data')
       setReplyingToUsername2(res.data["replies"][0].user.username)
-      console.log(res.data["replies"][0].user.username, 'oioioi')
 
     })
     .catch((error) => {

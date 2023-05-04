@@ -105,7 +105,31 @@ function PostedReply({commentId}) {
       console.error(err);
     }
   };
+
+  //updating a reply
+const [updatedReply, setUpdatedReply] = useState("");
+const handleChange = (event) => {
+  setUpdatedReply(event.target.value);
+};
+
+const updateReply = async (commentId, replyId, updatedReply) => {
+  try {
+    const res = await axios.get(`http://localhost:3001/comments/${commentId}`);
+    const comment = res.data;
+    const replies = comment.replies;
+
+    const replyToUpdate = replies.find(reply => reply.id === replyId);
+
+    replyToUpdate.content = updatedReply;
+
+    await axios.put(`http://localhost:3001/comments/${commentId}`, comment);
+    setReplies(replies);
+  } catch (err) {
+    console.error(err);
+  }
+}
   
+
   // return (
   //   <div>
   //     {comments &&
@@ -247,12 +271,19 @@ function PostedReply({commentId}) {
                                 className="edit-form-field"
                                 type="text"
                                 defaultValue={`@${reply.replyingTo} ${reply.content}`}
+                                onChange={handleChange}
                               />
 
                               <input
                                 className="update-btn"
                                 type="submit"
                                 value="UPDATE"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  updateReply(commentId, reply.id, updatedReply)
+  
+            
+                                }}
                               />
                             </form>
                           ) : (

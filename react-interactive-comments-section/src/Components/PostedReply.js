@@ -144,7 +144,6 @@ const handleDownvote = async (commentId, replyId) => {
 
     await axios.put(`http://localhost:3001/comments/${commentId}`, comment);
     setReplies(replies);
-    // window.location.reload();
   } catch (err) {
     console.error(err);
   }

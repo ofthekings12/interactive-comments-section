@@ -2,6 +2,7 @@
   command = "npm run build"
   publish = "react-interactive-comments-section/build"
   functions = "interactive-comments-section/netlify/functions"
+  environment = { NODE_VERSION = "18.11.0" }
 
 [build.environment]
   REACT_APP_API_URL = "/.netlify/functions/api"

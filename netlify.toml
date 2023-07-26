@@ -1,6 +1,6 @@
 [build]
   base = "react-interactive-comments-section"
-  functions = "interactive-comments-section/netlify/functions"
+functions = "react-interactive-comments-section/interactive-comments-section/netlify/functions"
 
 [dev]
   functions = "interactive-comments-section/netlify/functions"

@@ -35,7 +35,7 @@ function PostedReply({ commentId }) {
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  }, [commentId]);
 
   // toggle Delete Modal
   const [modal, setModal] = useState(false);

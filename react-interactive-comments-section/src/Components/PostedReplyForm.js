@@ -2,14 +2,18 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./PostedReplyForm.scss";
 
+const api = axios.create({
+  baseURL: process.env.REACT_APP_API_URL || "http://localhost:3001",
+});
+
 function PostedReplyForm({ replyId, commentId }) {
   //fetching currentUser Avatar
   const [image, setImage] = useState("");
   const [currentUsername, setCurrentUsername] = useState("");
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3001/currentUser")
+    api
+      .get("/currentUser")
       .then((res) => {
         setImage(res.data.image.png);
         setCurrentUsername(res.data.username);
@@ -32,8 +36,8 @@ function PostedReplyForm({ replyId, commentId }) {
   const [replyingToUsername2, setReplyingToUsername2] = useState("");
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:3001/comments/${commentId}`)
+    api
+      .get(`/comments/${commentId}`)
       .then((res) => {
         setExistingComment2(res.data);
         setExistingReplies2(res.data["replies"]);
@@ -48,7 +52,7 @@ function PostedReplyForm({ replyId, commentId }) {
     e.preventDefault();
 
     try {
-      await axios.put(`http://localhost:3001/comments/${commentId}`, {
+      await api.put(`/comments/${commentId}`, {
         ...existingComment2,
         replies: [
           ...existingReplies2,

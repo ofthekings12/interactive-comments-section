@@ -2,6 +2,10 @@ import "./AddComment.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+const api = axios.create({
+  baseURL: process.env.REACT_APP_API_URL || "http://localhost:3001",
+});
+
 function AddComment() {
 
   //fetching comments
@@ -14,8 +18,8 @@ function AddComment() {
   const [username, setUsername] = useState(null)
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3001/currentUser")
+    api
+      .get("/currentUser")
       .then((res) => {
         setImage(res.data.image.png);
         setUsername(res.data.username)
@@ -31,7 +35,7 @@ function AddComment() {
   const submitComment = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3001/comments", {
+      await api.post("/comments", {
         id: null,
         content: comment,
         createdAt: 'now',

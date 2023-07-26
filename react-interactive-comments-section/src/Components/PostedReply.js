@@ -4,13 +4,17 @@ import axios from "axios";
 import DeleteModal from "./DeleteModal";
 import PostedReplyForm from "./PostedReplyForm";
 
+const api = axios.create({
+  baseURL: process.env.REACT_APP_API_URL || "http://localhost:3001",
+});
+
 function PostedReply({ commentId }) {
   //Fetch currentUser
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3001/currentUser")
+    api
+      .get("/currentUser")
       .then((res) => {
         setCurrentUser(res.data);
       })
@@ -23,8 +27,8 @@ function PostedReply({ commentId }) {
   const [replies, setReplies] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:3001/comments/${commentId}`)
+    api
+      .get(`/comments/${commentId}`)
       .then((res) => {
         setReplies(res.data["replies"]);
       })
@@ -71,8 +75,8 @@ function PostedReply({ commentId }) {
   //delete Reply
   const deleteReply = async (replyId, commentId) => {
     try {
-      const res = await axios.get(
-        `http://localhost:3001/comments/${commentId}`
+      const res = await api.get(
+        `/comments/${commentId}`
       );
       const comment = res.data;
 
@@ -80,7 +84,7 @@ function PostedReply({ commentId }) {
         (reply) => reply.id !== replyId
       );
 
-      await axios.put(`http://localhost:3001/comments/${commentId}`, {
+      await api.put(`/comments/${commentId}`, {
         ...comment,
         replies: updatedReplies,
       });
@@ -98,7 +102,7 @@ function PostedReply({ commentId }) {
 
   const updateReply = async (commentId, replyId, updatedReply) => {
     try {
-      const res = await axios.get(`http://localhost:3001/comments/${commentId}`);
+      const res = await api.get(`/comments/${commentId}`);
       const comment = res.data;
       const replies = comment.replies;
   
@@ -107,7 +111,7 @@ function PostedReply({ commentId }) {
         replyToUpdate.content = updatedReply;
       }
   
-      await axios.put(`http://localhost:3001/comments/${commentId}`, comment);
+      await api.put(`/comments/${commentId}`, comment);
       setReplies(replies);
       window.location.reload();
     } catch (err) {
@@ -118,14 +122,14 @@ function PostedReply({ commentId }) {
 //voting
 const handleUpvote = async (commentId, replyId) => {
   try {
-    const res = await axios.get(`http://localhost:3001/comments/${commentId}`);
+    const res = await api.get(`/comments/${commentId}`);
     const comment = res.data;
     const replies = comment.replies;
 
     const replyToUpdate = replies.find((reply) => reply.id === replyId);
     replyToUpdate.score++;
 
-    await axios.put(`http://localhost:3001/comments/${commentId}`, comment);
+    await api.put(`/comments/${commentId}`, comment);
     setReplies(replies);
     // window.location.reload();
   } catch (err) {
@@ -135,14 +139,14 @@ const handleUpvote = async (commentId, replyId) => {
 
 const handleDownvote = async (commentId, replyId) => {
   try {
-    const res = await axios.get(`http://localhost:3001/comments/${commentId}`);
+    const res = await api.get(`/comments/${commentId}`);
     const comment = res.data;
     const replies = comment.replies;
 
     const replyToUpdate = replies.find((reply) => reply.id === replyId);
     replyToUpdate.score--;
 
-    await axios.put(`http://localhost:3001/comments/${commentId}`, comment);
+    await api.put(`/comments/${commentId}`, comment);
     setReplies(replies);
   } catch (err) {
     console.error(err);

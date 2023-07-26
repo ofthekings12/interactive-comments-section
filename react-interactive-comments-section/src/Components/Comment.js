@@ -6,7 +6,9 @@ import axios from "axios";
 import DeleteModal from "./DeleteModal";
 
 
-//
+const api = axios.create({
+  baseURL: process.env.REACT_APP_API_URL || "http://localhost:3001",
+});
 
 export default function Comment() {
   //Fetch currentUser
@@ -14,8 +16,8 @@ export default function Comment() {
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3001/currentUser")
+    api
+      .get("/currentUser")
       .then((res) => {
         setCurrentUser(res.data);
       })
@@ -28,8 +30,8 @@ export default function Comment() {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3001/comments")
+    api
+      .get("/comments")
       .then((res) => {
         setComments(res.data);
       })
@@ -76,7 +78,7 @@ export default function Comment() {
   //Delete comment
   const deleteComment = async (commentId) => {
     try {
-      await axios.delete(`http://localhost:3001/comments/${commentId}`);
+      await api.delete(`/comments/${commentId}`);
       setComments(comments.filter((comment) => comment.id !== commentId));
     } catch (error) {
       console.error(error);
@@ -87,14 +89,14 @@ export default function Comment() {
   //Update comment
   const updateComment = async (commentId, updatedComment) => {
     try {
-      const { data: comment } = await axios.get(
-        `http://localhost:3001/comments/${commentId}`
+      const { data: comment } = await api.get(
+        `/comments/${commentId}`
       );
       if (
         document.getElementById("comment-edit-form-field") !== updatedComment
         ) {
         const updated = { ...comment, content: updatedComment };
-        await axios.put(`http://localhost:3001/comments/${commentId}`, updated);
+        await api.put(`/comments/${commentId}`, updated);
         window.location.reload();
       }
     } catch (err) {
@@ -111,11 +113,11 @@ export default function Comment() {
   // voting
   const handleUpvote = async (commentId) => {
     try {
-      const res = await axios.get(`http://localhost:3001/comments/${commentId}`);
+      const res = await api.get(`/comments/${commentId}`);
       const comment = res.data;
       comment.score++;
   
-      await axios.put(`http://localhost:3001/comments/${commentId}`, comment);
+      await api.put(`/comments/${commentId}`, comment);
   
       setComments((comments) =>
         comments.map((c) => (c.id === comment.id ? comment : c))
@@ -127,11 +129,11 @@ export default function Comment() {
   
   const handleDownvote = async (commentId) => {
     try {
-      const res = await axios.get(`http://localhost:3001/comments/${commentId}`);
+      const res = await api.get(`/comments/${commentId}`);
       const comment = res.data;
       comment.score--;
   
-      await axios.put(`http://localhost:3001/comments/${commentId}`, comment);
+      await api.put(`/comments/${commentId}`, comment);
   
       setComments((comments) =>
         comments.map((c) => (c.id === comment.id ? comment : c))

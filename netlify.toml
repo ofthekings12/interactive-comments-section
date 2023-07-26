@@ -1,5 +1,5 @@
 [build]
-  command = "npm run-script build"
+  command = "npm run build"
   publish = "react-interactive-comments-section/build"
   functions = "interactive-comments-section/netlify/functions"
 

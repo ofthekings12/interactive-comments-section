@@ -21,7 +21,7 @@ function AddComment() {
     api
       .get("/currentUser")
       .then((res) => {
-        setImage(res.data.image.png);
+        setImage(res.data.image?.png?);
         setUsername(res.data.username)
       })
       .catch((error) => {

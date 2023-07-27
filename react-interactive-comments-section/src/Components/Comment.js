@@ -151,7 +151,7 @@ export default function Comment() {
       {
         commentsArray &&
         commentsArray.map((comment) => {
-          console.log(comments, "HERE", typeof comments, "YAYO")
+          console.log(typeof comment.replies, "is the type")
           return (
             <div className="comment-reply-container" key={comment.id}>
               <div className="comment" key={comment.id}>
@@ -309,7 +309,8 @@ export default function Comment() {
                   toggleModal={handleState}
                 />
               )}
-              {comment.replies.length > 0 ? (
+              {Array.isArray(comment.replies) &&
+              comment.replies.length > 0 ? (
                 <PostedReply
                   commentId={comment.id}
                   replyId={comment.replies.id}

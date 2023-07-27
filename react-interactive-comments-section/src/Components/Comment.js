@@ -310,7 +310,7 @@ export default function Comment() {
                 />
               )}
               {
-              comment.replies ? (
+              comment.replies.length > 0 ? (
                 <PostedReply
                   commentId={comment.id}
                   replyId={comment.replies.id}

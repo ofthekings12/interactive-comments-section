@@ -2,10 +2,10 @@
   base = "react-interactive-comments-section"
 
 [dev]
-  functions = "netlify"
+  functions = "functions"
 
 [build.environment]
-  REACT_APP_API_URL = "netlify"
+  REACT_APP_API_URL = "functions"
 
 
 [[redirects]]

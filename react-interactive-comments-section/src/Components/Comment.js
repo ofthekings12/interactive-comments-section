@@ -309,16 +309,12 @@ export default function Comment() {
                   toggleModal={handleState}
                 />
               )}
-              {Array.isArray(comment.replies) &&
+              {
               comment.replies.length > 0 ? (
-                
-                comment.replies.map((reply) => (
-                  <PostedReply
-                    key={reply.id} // Make sure to add a unique key when rendering a list of components
-                    commentId={comment.id}
-                    replyId={reply.id} // Use reply.id instead of comment.replies.id
-                  />
-                ))
+                <PostedReply
+                  commentId={comment.id}
+                  replyId={comment.replies.id}
+                />
               ) : null}
             </div>
         )

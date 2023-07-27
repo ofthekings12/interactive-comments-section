@@ -309,7 +309,7 @@ export default function Comment() {
                   toggleModal={handleState}
                 />
               )}
-              {Array.isArray(comment.replies) &&
+              {
               comment.replies.length > 0 ? (
                 <PostedReply
                   commentId={comment.id}

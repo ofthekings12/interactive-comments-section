@@ -144,13 +144,12 @@ export default function Comment() {
   };
   
   
-  const commentsArray = Object.values(comments);
 
   return (
     <div>
       {
-        commentsArray &&
-        commentsArray.map((comment) => {
+        comments &&
+        comments.map((comment) => {
           console.log(comment.replies, "replies")
           return (
             <div className="comment-reply-container" key={comment.id}>

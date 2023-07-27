@@ -143,13 +143,13 @@ export default function Comment() {
     }
   };
   
-  const commentsArray = Object.values(comments);
-  console.log(commentsArray, "HEREE")
+  // const commentsArray = Object.values(comments);
+  console.log(comments, "HEREE")
 
   return (
     <div>
       {
-        commentsArray.map((comment) => {
+        comments.map((comment) => {
           console.log(comment.replies, "replies")
           return (
             <div className="comment-reply-container" key={comment.id}>

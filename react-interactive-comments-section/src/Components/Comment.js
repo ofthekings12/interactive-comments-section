@@ -144,7 +144,7 @@ export default function Comment() {
   };
   
   
-  const commentsArray = Object.values(comments);
+  const commentsArray = Object.entries(comments);
 
   return (
     <div>

@@ -20,8 +20,10 @@ Users should be able to:
 ![](https://github.com/ofthekings12/interactive-comments-section/blob/main/screenshots/Mobile.png?raw=true)
 
 ## GIF
-![]()
+![](https://github.com/ofthekings12/interactive-comments-section/blob/main/screenshots/desktopGIF.gif?raw=true)
 
+## Mobile Responsiveness
+![](https://github.com/ofthekings12/interactive-comments-section/blob/main/screenshots/MobileGIF.gif?raw=true)
 
 ### Built with
 

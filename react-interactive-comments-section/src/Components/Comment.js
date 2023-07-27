@@ -151,7 +151,7 @@ export default function Comment() {
       {
         commentsArray &&
         commentsArray.map((comment) => {
-          console.log(typeof comment.replies, "replies")
+          console.log(comment.replies, "replies")
           return (
             <div className="comment-reply-container" key={comment.id}>
               <div className="comment" key={comment.id}>
@@ -310,7 +310,7 @@ export default function Comment() {
                 />
               )}
               {
-              comment.replies.length > 0 ? (
+              comment.replies ? (
                 <PostedReply
                   commentId={comment.id}
                   replyId={comment.replies.id}

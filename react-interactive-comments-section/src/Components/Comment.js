@@ -151,7 +151,7 @@ export default function Comment() {
       {
         commentsArray &&
         commentsArray.map((comment) => {
-          console.log(typeof comment.replies, "is the type")
+          console.log(typeof comment.replies, "replies")
           return (
             <div className="comment-reply-container" key={comment.id}>
               <div className="comment" key={comment.id}>

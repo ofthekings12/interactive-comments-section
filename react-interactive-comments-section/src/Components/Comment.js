@@ -150,6 +150,7 @@ export default function Comment() {
     <div>
       {comments &&
         comments.map((comment) => {
+          console.log(comment, "HEEREE")
           return (
             <div className="comment-reply-container" key={comment.id}>
               <div className="comment" key={comment.id}>
@@ -182,7 +183,7 @@ export default function Comment() {
                       <div className="comment-details">
                         <img
                           className="user-avatar"
-                          src={comment?.user?.image?.png}
+                          src={comment?.user?.image?.png || ""}
                           alt="userAvatar"
                         />
                         <div className="user-handle" key={comment.id}>

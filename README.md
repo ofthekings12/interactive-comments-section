@@ -19,6 +19,9 @@ Users should be able to:
 ## Mobile
 ![](https://github.com/ofthekings12/interactive-comments-section/blob/main/screenshots/Mobile.png?raw=true)
 
+## GIF
+![]()
+
 
 ### Built with
 
@@ -39,5 +42,12 @@ I need to work on better practices when it comes to my code structure, and look 
 
 ## Author
 
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
+- Frontend Mentor - [@ofthekings12](https://www.frontendmentor.io/profile/ofthekings12)
+
+### How to run on your Local Environment
+- git clone
+- npm install
+- run `json-server --watch data.json -p 3001`
+- cd react-interactive-comments-section
+- npm start
 

@@ -144,14 +144,14 @@ export default function Comment() {
   };
   
   
-  
+  const commentsArray = Object.values(comments);
 
   return (
     <div>
       {
-        comments &&
-        comments.map((comment) => {
-          console.log(comments, "HERE")
+        commentsArray &&
+        commentsArray.map((comment) => {
+          console.log(comments, "HERE", typeof comments, "YAYO")
           return (
             <div className="comment-reply-container" key={comment.id}>
               <div className="comment" key={comment.id}>
@@ -316,8 +316,10 @@ export default function Comment() {
                 />
               ) : null}
             </div>
-          );
-        })}
+        )
+       })}
+
     </div>
   );
 }
+

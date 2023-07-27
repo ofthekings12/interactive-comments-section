@@ -309,12 +309,15 @@ export default function Comment() {
                   toggleModal={handleState}
                 />
               )}
-              {
+              {Array.isArray(comment.replies) &&
               comment.replies.length > 0 ? (
+                comment.replies.map((reply) => (
                 <PostedReply
+                key={comment.replies.id}
                   commentId={comment.id}
                   replyId={comment.replies.id}
                 />
+                ))
               ) : null}
             </div>
         )

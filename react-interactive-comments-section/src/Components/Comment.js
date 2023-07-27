@@ -148,8 +148,10 @@ export default function Comment() {
 
   return (
     <div>
-      {comments &&
+      {
+        comments &&
         comments.map((comment) => {
+          console.log(comments, "HERE")
           return (
             <div className="comment-reply-container" key={comment.id}>
               <div className="comment" key={comment.id}>

@@ -3,13 +3,13 @@
 functions = "react-interactive-comments-section/interactive-comments-section/netlify/functions"
 
 [dev]
-  functions = "netlify/functions"
+  functions = "react-interactive-comments-section/interactive-comments-section/netlify/functions"
 
 [build.environment]
-  REACT_APP_API_URL = "netlify/functions"
+  REACT_APP_API_URL = "react-interactive-comments-section/interactive-comments-section/netlify/functions"
 
 [functions]
-  directory = "netlify/functions"
+  directory = "react-interactive-comments-section/interactive-comments-section/netlify/functions"
 
 [[redirects]]
   from = "/*"

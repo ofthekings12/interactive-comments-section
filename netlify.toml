@@ -1,5 +1,5 @@
 [build]
-  base = "react-interactive-comments-section"
+  functions = "functions"
 
 [dev]
   functions = "functions"

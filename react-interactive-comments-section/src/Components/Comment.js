@@ -175,7 +175,7 @@ export default function Comment() {
                   </svg>
                 </div>
                 <div className="comment-content-header">
-                  {currentUser &&
+                  {
                   comment?.user?.username === currentUser.username ? (
                     // beginning of logged in user
                     <div className="comment-header">

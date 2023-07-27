@@ -1,6 +1,3 @@
-[build]
-  base = "interactive-comments-section"
-
 [dev]
   functions = "interactive-comments-section/netlify/functions"
 

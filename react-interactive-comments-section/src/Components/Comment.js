@@ -144,14 +144,12 @@ export default function Comment() {
   };
   
   
-  const commentsArray = Object.values(comments);
 
   return (
     <div>
       {
-        commentsArray &&
-        commentsArray.map((comment) => {
-          console.log(comment.replies, "replies")
+        comments &&
+        comments.map((comment) => {
           return (
             <div className="comment-reply-container" key={comment.id}>
               <div className="comment" key={comment.id}>
@@ -309,15 +307,15 @@ export default function Comment() {
                   toggleModal={handleState}
                 />
               )}
-              {comment.replies &&
-              Object.values(comment.replies).map((reply) => (
+              {(comment.replies) &&
+              comment.replies.length > 0 ? (
                 <PostedReply
                 key={comment.replies.id}
                   commentId={comment.id}
                   replyId={comment.replies.id}
                 />
 
-              ))}
+              ) : null}
             </div>
         )
        })}

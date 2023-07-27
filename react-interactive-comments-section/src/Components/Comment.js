@@ -143,13 +143,12 @@ export default function Comment() {
     }
   };
   
-  
+  const commentsArray = Object.values(comments);
 
   return (
     <div>
       {
-        comments &&
-        comments.map((comment) => {
+        commentsArray.map((comment) => {
           console.log(comment.replies, "replies")
           return (
             <div className="comment-reply-container" key={comment.id}>
@@ -308,14 +307,15 @@ export default function Comment() {
                   toggleModal={handleState}
                 />
               )}
-              {comment.replies &&
-              comment.replies.length ? (
+              {Array.isArray(comment.replies) &&
+          comment.replies.map((reply) => (
                 <PostedReply
                 key={comment.replies.id}
                   commentId={comment.id}
                   replyId={comment.replies.id}
                 />
-              ) : null}
+          
+              ))}
             </div>
         )
        })}

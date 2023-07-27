@@ -1,15 +1,15 @@
 [build]
   base = "react-interactive-comments-section"
-functions = "/.netlify/functions"
+functions = "../netlify/functions/api"
 
 [dev]
-  functions = "interactive-comments-section/netlify/functions"
+  functions = "netlify/functions/api"
 
 [build.environment]
-  REACT_APP_API_URL = "/.netlify/functions/api"
+  REACT_APP_API_URL = "netlify/functions/api"
 
 [functions]
-  directory = "interactive-comments-section/netlify/functions"
+  directory = "netlify/functions/api"
 
 [[redirects]]
   from = "/*"

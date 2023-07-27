@@ -176,7 +176,7 @@ export default function Comment() {
                 </div>
                 <div className="comment-content-header">
                   {currentUser &&
-                  comment.user.username === currentUser.username ? (
+                  comment?.user?.username === currentUser.username ? (
                     // beginning of logged in user
                     <div className="comment-header">
                       <div className="comment-details">
